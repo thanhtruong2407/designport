@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Problem: Generation vs. Usage Gap | Text Shadow AI Case Study</title>
+  <meta name="description" content="Sub-page exploring the core product problem of the Text Shadow AI case study: AI could output text shadow, but the system could not decide, render, and control it reliably.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          fontFamily: { sans: ["Inter", "system-ui", "sans-serif"] },
+          colors: {
+            brand: {
+              50: "#f4f2ff",
+              100: "#ebe6ff",
+              200: "#d8d0ff",
+              300: "#bcaeff",
+              400: "#9a82ff",
+              500: "#7b5cff",
+              600: "#6d50f0",
+              700: "#5a42cf",
+              800: "#4a37aa",
+              900: "#3d3088"
+            }
+          },
+          boxShadow: { card: "0 10px 35px rgba(15, 23, 42, 0.08)" }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="min-w-[320px] bg-slate-50 font-sans text-slate-900 antialiased dark:bg-slate-950 dark:text-slate-100">
+  <header class="sticky top-0 z-50 border-b border-slate-200 bg-white/85 backdrop-blur-xl dark:border-slate-800 dark:bg-slate-950/85">
+    <div class="mx-auto flex min-h-[76px] w-full max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+      <a class="text-sm font-semibold text-slate-900 dark:text-slate-100" href="../../index.html#hero">Thanh Truong</a>
+      <button
+        class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-500 transition hover:border-brand-300 hover:bg-brand-50 hover:text-brand-600 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:border-brand-500/40 dark:hover:bg-brand-500/10 dark:hover:text-brand-300"
+        type="button"
+        aria-label="Toggle light/dark mode"
+        data-theme-toggle
+      >
+        <svg class="h-4 w-4 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path data-theme-icon d="M12 3a9 9 0 1 0 9 9c0-.46-.04-.92-.1-1.36a5.389 5.389 0 0 1-4.4 2.26 5.403 5.403 0 0 1-3.14-9.8c-.44-.06-.9-.1-1.36-.1z"/>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="border-b border-slate-200 px-4 py-6 sm:px-6 lg:px-8 dark:border-slate-800">
+      <div id="breadcrumb-problem"></div>
+    </section>
+
+    <section class="relative overflow-hidden px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+      <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(123,92,255,0.12),transparent_32%),radial-gradient(circle_at_80%_25%,rgba(96,165,250,0.12),transparent_28%),radial-gradient(circle_at_50%_100%,rgba(14,165,233,0.06),transparent_30%)]"></div>
+      <div class="relative mx-auto w-full max-w-7xl">
+        <h1 class="max-w-4xl text-4xl font-bold text-slate-950 dark:text-white sm:text-5xl">AI could generate text shadow, but could not apply it consistently</h1>
+        <p class="mt-5 max-w-3xl text-lg leading-8 text-slate-600 dark:text-slate-300">AI could generate text shadow, but lacked clear design logic and product support. The result was inconsistent behavior, weak context awareness, and outputs that could not be fully rendered or edited in the canvas.</p>
+      </div>
+    </section>
+
+    <section id="section-market-reality" class="scroll-mt-36 border-t border-slate-200 px-4 py-12 dark:border-slate-800 sm:px-6 lg:px-8">
+      <div class="mx-auto w-full max-w-7xl">
+        <p class="text-5xl font-bold text-slate-300 dark:text-slate-700">01</p>
+        <div class="mb-10">
+          <div class="mt-8">
+            <p class="mb-4 text-[11px] font-semibold uppercase text-slate-500 dark:text-slate-400">Market Reality</p>
+            <h2 class="max-w-3xl text-3xl font-semibold text-slate-950 dark:text-white sm:text-4xl">Text shadow is functionally necessary</h2>
+          </div>
+        </div>
+        <p class="mb-5 max-w-4xl text-base leading-8 text-slate-600 dark:text-slate-300">Text shadow appears in many modern interfaces when readability becomes a problem.</p>
+        <p class="mb-5 max-w-4xl text-base leading-8 text-slate-600 dark:text-slate-300">Common use cases include:</p>
+
+        <ul class="mb-8 grid gap-2">
+          <li class="relative max-w-4xl pl-5 text-base leading-8 text-slate-600 before:absolute before:left-0 before:top-3.5 before:h-1.5 before:w-1.5 before:rounded-full before:bg-brand-500 dark:text-slate-300">Text on image backgrounds</li>
+          <li class="relative max-w-4xl pl-5 text-base leading-8 text-slate-600 before:absolute before:left-0 before:top-3.5 before:h-1.5 before:w-1.5 before:rounded-full before:bg-brand-500 dark:text-slate-300">Low-contrast surfaces</li>
+          <li class="relative max-w-4xl pl-5 text-base leading-8 text-slate-600 before:absolute before:left-0 before:top-3.5 before:h-1.5 before:w-1.5 before:rounded-full before:bg-brand-500 dark:text-slate-300">Dense layouts with weak visual separation</li>
+        </ul>
+
+
+
+        <p class="mb-5 max-w-4xl text-base leading-8 text-slate-600 dark:text-slate-300">Text shadow is not only decorative. It improves readability, visual hierarchy, and text-background separation.</p>
+        <p class="mb-5 max-w-4xl text-base leading-8 text-slate-600 dark:text-slate-300">This reveals an important insight: if designers repeatedly use text shadow to solve readability problems, AI systems should be able to generate it consistently and correctly.</p>
+
+
+
+
+
+
+
+        <figure class="mt-8 w-full overflow-hidden rounded-[1.5rem] border border-slate-200 dark:border-slate-800">
+          <img class="block w-full" src="../../assets/textshadow-problem-market-reality.png" alt="Examples of text shadow used on image backgrounds, low-contrast surfaces, and dense layouts" loading="lazy">
+        </figure>
+
+
+
+
+      </div>
+    </section>
+
+    <section id="section-ai-limitation" class="scroll-mt-36 border-t border-slate-200 px-4 py-12 dark:border-slate-800 sm:px-6 lg:px-8">
+      <div class="mx-auto w-full max-w-7xl">
+        <p class="text-5xl font-bold text-slate-300 dark:text-slate-700">02</p>
+        <div class="mb-10">
+          <div class="mt-8">
+            <p class="mb-4 text-[11px] font-semibold uppercase text-slate-500 dark:text-slate-400">AI Limitation</p>
+            <h2 class="max-w-3xl text-3xl font-semibold text-slate-950 dark:text-white sm:text-4xl">Can generate, but inconsistently</h2>
+          </div>
+        </div>
+        <p class="mb-5 max-w-4xl text-base leading-8 text-slate-600 dark:text-slate-300">Testing showed that AI could generate text shadow in the internal code output (DOM), but the behavior was inconsistent.</p>
+
+
+
+
+
+
+        <h3 class="mb-3 mt-10 text-lg font-semibold text-slate-950 dark:text-white">Common issues included</h3>
+
+
+        <ul class="grid gap-2">
+          <li class="relative max-w-4xl pl-5 text-base leading-8 text-slate-600 before:absolute before:left-0 before:top-3.5 before:h-1.5 before:w-1.5 before:rounded-full before:bg-brand-500 dark:text-slate-300">Shadow appearing on one screen but missing on similar screens</li>
+          <li class="relative max-w-4xl pl-5 text-base leading-8 text-slate-600 before:absolute before:left-0 before:top-3.5 before:h-1.5 before:w-1.5 before:rounded-full before:bg-brand-500 dark:text-slate-300">Different shadow values used for similar contexts</li>
+          <li class="relative max-w-4xl pl-5 text-base leading-8 text-slate-600 before:absolute before:left-0 before:top-3.5 before:h-1.5 before:w-1.5 before:rounded-full before:bg-brand-500 dark:text-slate-300">Missing or incorrect shadows on low-contrast backgrounds</li>
+        </ul>
+
+
+
+
+
+
+
+
+        <h3 class="mb-3 mt-10 text-lg font-semibold text-slate-950 dark:text-white">The root problem</h3>
+        <p class="mb-5 max-w-4xl text-base leading-8 text-slate-600 dark:text-slate-300">The root problem was not generation capability, but missing decision logic.</p>
+        <p class="mb-5 max-w-4xl text-base leading-8 text-slate-600 dark:text-slate-300">AI could generate visual output, but it could not:</p>
+
+        <ul class="mb-5 grid gap-2">
+          <li class="relative max-w-4xl pl-5 text-base leading-8 text-slate-600 before:absolute before:left-0 before:top-3.5 before:h-1.5 before:w-1.5 before:rounded-full before:bg-brand-500 dark:text-slate-300">Understand visual context</li>
+          <li class="relative max-w-4xl pl-5 text-base leading-8 text-slate-600 before:absolute before:left-0 before:top-3.5 before:h-1.5 before:w-1.5 before:rounded-full before:bg-brand-500 dark:text-slate-300">Decide when shadow was needed</li>
+          <li class="relative max-w-4xl pl-5 text-base leading-8 text-slate-600 before:absolute before:left-0 before:top-3.5 before:h-1.5 before:w-1.5 before:rounded-full before:bg-brand-500 dark:text-slate-300">Apply consistent rules across screens</li>
+        </ul>
+
+        <p class="mb-5 max-w-4xl text-base leading-8 text-slate-600 dark:text-slate-300">This revealed a key gap: AI needed rule-based logic and contextual reasoning, not only pattern generation.</p>
+
+
+
+        <div class="mt-8 flex w-full flex-col gap-5">
+          <figure class="w-full overflow-hidden rounded-[1.5rem] border border-slate-200 dark:border-slate-800">
+            <img class="block w-full" src="../../assets/textshadow-problem-ai-limitation-missing.png" alt="AI test result showing text shadow missing where the generated screen needed additional readability support" loading="lazy">
+          </figure>
+          <figure class="w-full overflow-hidden rounded-[1.5rem] border border-slate-200 dark:border-slate-800">
+            <img class="block w-full" src="../../assets/textshadow-problem-ai-limitation-inconsistency.png" alt="AI test result showing inconsistent text shadow behavior across similar generated screens" loading="lazy">
+          </figure>
+          <figure class="w-full overflow-hidden rounded-[1.5rem] border border-slate-200 dark:border-slate-800">
+            <img class="block w-full" src="../../assets/textshadow-problem-ai-limitation-low.png" alt="AI test result showing text shadow generated with low intensity on a low-contrast background" loading="lazy">
+          </figure>
+        </div>
+
+
+
+      </div>
+    </section>
+
+    <section id="section-product-gap" class="scroll-mt-36 border-t border-slate-200 px-4 py-12 dark:border-slate-800 sm:px-6 lg:px-8">
+      <div class="mx-auto w-full max-w-7xl">
+        <p class="text-5xl font-bold text-slate-300 dark:text-slate-700">03</p>
+        <div class="mb-10">
+          <div class="mt-8">
+            <p class="mb-4 text-[11px] font-semibold uppercase text-slate-500 dark:text-slate-400">Product Gap</p>
+            <h2 class="max-w-3xl text-3xl font-semibold text-slate-950 dark:text-white sm:text-4xl">Cannot render in canvas</h2>
+          </div>
+        </div>
+        <p class="mb-5 max-w-4xl text-base leading-8 text-slate-600 dark:text-slate-300">The Visily canvas could not render text shadow, even though AI could generate it in the internal code layer. This created a system gap between AI generation and product rendering.</p>
+        <p class="mb-5 max-w-4xl text-base leading-8 text-slate-600 dark:text-slate-300">As a result:</p>
+
+        <ul class="mb-8 grid gap-2">
+          <li class="relative max-w-4xl pl-5 text-base leading-8 text-slate-600 before:absolute before:left-0 before:top-3.5 before:h-1.5 before:w-1.5 before:rounded-full before:bg-brand-500 dark:text-slate-300">Text shadow could not be displayed in the canvas</li>
+          <li class="relative max-w-4xl pl-5 text-base leading-8 text-slate-600 before:absolute before:left-0 before:top-3.5 before:h-1.5 before:w-1.5 before:rounded-full before:bg-brand-500 dark:text-slate-300">Users could not edit or control the output</li>
+          <li class="relative max-w-4xl pl-5 text-base leading-8 text-slate-600 before:absolute before:left-0 before:top-3.5 before:h-1.5 before:w-1.5 before:rounded-full before:bg-brand-500 dark:text-slate-300">AI-generated results became unusable in the product</li>
+        </ul>
+
+
+
+
+
+
+
+
+
+
+        <h3 class="mb-3 mt-10 text-lg font-semibold text-slate-950 dark:text-white">Impact on non-designers</h3>
+        <p class="mb-5 max-w-4xl text-base leading-8 text-slate-600 dark:text-slate-300">This issue had a strong impact on non-designers, who expected AI outputs to work immediately without technical adjustments.</p>
+
+
+
+
+
+        <h3 class="mb-3 mt-10 text-lg font-semibold text-slate-950 dark:text-white">The root problem</h3>
+        <p class="mb-5 max-w-4xl text-base leading-8 text-slate-600 dark:text-slate-300">The root problem was system misalignment. AI could generate text shadow, but the canvas architecture did not support rendering it.</p>
+        <p class="mb-5 max-w-4xl text-base leading-8 text-slate-600 dark:text-slate-300">This revealed a critical insight: AI capability alone is not enough. The system must connect generation, rendering, and user control to create usable product output.</p>
+
+
+
+
+
+        <figure class="mt-8 w-full overflow-hidden rounded-[1.5rem] border border-slate-200 dark:border-slate-800">
+          <img class="block w-full" src="../../assets/textshadow-problem-product-gap.png" alt="Diagram showing AI-generated text shadow output existing in the system but not rendered or controllable in the Visily canvas, leaving users with broken functionality" loading="lazy">
+        </figure>
+
+
+        <div class="mt-10 rounded-[1.5rem] border-2 border-brand-400 bg-brand-100/70 p-7 dark:border-brand-400/60 dark:bg-brand-500/10 sm:p-10">
+          <h3 class="max-w-3xl text-2xl font-semibold text-slate-950 dark:text-white sm:text-3xl">Why all three layers matter</h3>
+          <p class="mt-5 max-w-3xl text-base leading-8 text-slate-700 dark:text-slate-200">The problem was not market demand or AI capability.</p>
+          <p class="mt-4 max-w-3xl text-base leading-8 text-slate-700 dark:text-slate-200">The market needed text shadow for readability. AI could generate it. But the product could not render or support it.</p>
+          <p class="mt-4 max-w-3xl text-base leading-8 text-slate-700 dark:text-slate-200">The real gap was system alignment. Users could generate a feature with AI, but could not see, edit, or use the result.</p>
+          <p class="mt-4 max-w-3xl text-base leading-8 text-slate-700 dark:text-slate-200">This created the opportunity to improve both AI logic and product support together.</p>
+        </div>
+
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-slate-200 px-4 py-10 sm:px-6 lg:px-8 dark:border-slate-800">
+    <div class="mx-auto flex w-full max-w-7xl flex-col items-start justify-between gap-6 sm:flex-row sm:items-center">
+      <a class="inline-flex min-h-11 items-center rounded-full border border-slate-300 bg-white px-5 py-2.5 text-sm font-semibold text-slate-900 transition hover:border-brand-300 hover:bg-brand-50 hover:text-brand-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100 dark:hover:border-brand-500/40 dark:hover:bg-brand-500/10 dark:hover:text-brand-200" href="../../project.html?id=textshadow-ai#section-problem">
+        <span class="mr-2" aria-hidden="true">&larr;</span>
+        Back to Text Shadow AI
+      </a>
+      <a class="text-[11px] font-semibold uppercase text-slate-500 transition hover:text-brand-600 dark:text-slate-400 dark:hover:text-brand-300" href="#top">Back to top</a>
+    </div>
+  </footer>
+
+  <script src="../../breadcrumb.js"></script>
+  <script>
+    buildBreadcrumb(document.getElementById("breadcrumb-problem"), [{"label":"Works","href":"../../index.html#work"},{"label":"Text Shadow AI","href":"../../project.html?id=textshadow-ai"},{"label":"Problem"}], { darkMode: true });
+  </script>
+  <script>
+    (function () {
+      const MOON = "M12 3a9 9 0 1 0 9 9c0-.46-.04-.92-.1-1.36a5.389 5.389 0 0 1-4.4 2.26 5.403 5.403 0 0 1-3.14-9.8c-.44-.06-.9-.1-1.36-.1z";
+      const SUN = "M12 7a5 5 0 1 0 0 10A5 5 0 0 0 12 7zm0-4a1 1 0 0 1 1 1v1a1 1 0 0 1-2 0V4a1 1 0 0 1 1-1zm0 16a1 1 0 0 1 1 1v1a1 1 0 0 1-2 0v-1a1 1 0 0 1 1-1zm9-9h1a1 1 0 0 1 0 2h-1a1 1 0 0 1 0-2zM3 11H2a1 1 0 0 0 0 2h1a1 1 0 0 0 0-2zm14.66-5.07.71-.71a1 1 0 0 1 1.41 1.41l-.71.71a1 1 0 0 1-1.41-1.41zM5.63 17.66l-.71.71a1 1 0 0 1-1.41-1.41l.71-.71a1 1 0 0 1 1.41 1.41zm11.32 1.41-.71-.71a1 1 0 0 1 1.41-1.41l.71.71a1 1 0 0 1-1.41 1.41zM5.63 6.34 4.92 5.63a1 1 0 0 1 1.41-1.41l.71.71A1 1 0 0 1 5.63 6.34z";
+      const toggle = document.querySelector("[data-theme-toggle]");
+      const icon = document.querySelector("[data-theme-icon]");
+      function applyTheme(theme) {
+        document.documentElement.classList.toggle("dark", theme === "dark");
+        if (icon) icon.setAttribute("d", theme === "light" ? SUN : MOON);
+        if (toggle) toggle.setAttribute("aria-label", theme === "light" ? "Switch to dark mode" : "Switch to light mode");
+      }
+      applyTheme("light");
+      if (toggle) {
+        toggle.addEventListener("click", () => {
+          const current = document.documentElement.classList.contains("dark") ? "dark" : "light";
+          applyTheme(current === "light" ? "dark" : "light");
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
