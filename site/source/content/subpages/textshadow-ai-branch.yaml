@@ -1,0 +1,397 @@
+seo:
+  title: "AI Behavior System | Text Shadow AI Case Study"
+  description: "AI behavior system deep dive for Text Shadow AI, covering rule definition, prompt logic, scenario-based validation, and iteration."
+header:
+  brandLabel: "Thanh Truong"
+  brandHref: "../../index.html#hero"
+breadcrumb:
+  elementId: "breadcrumb-ai"
+  items:
+    - label: "Works"
+      href: "../../index.html#work"
+    - label: "Text Shadow AI"
+      href: "../../project.html?id=textshadow-ai"
+    - label: "AI Behavior System"
+hero:
+  title: "AI Behavior System"
+  summary: "Fix inconsistent AI output. Add rules and test scenarios so AI makes reliable decisions."
+sections:
+  - id: "section-challenge"
+    number: "01"
+    kicker: "Problem"
+    title: "AI could generate text shadow, but could not use it reliably"
+    paragraphs:
+      - text: "AI output was inconsistent. In some cases, text shadow was missing even when the prompt asked for it. In other cases, the shadow appeared with weak intensity, incorrect values, or inconsistent behavior across similar screens."
+      - text: "The issue was not only visual quality. AI did not have clear decision logic for when, where, and how to use text shadow."
+    subsections:
+      - title: "Unstable behavior"
+        bullets:
+          - "Shadow missing when needed"
+          - "Weak or incorrect values"
+          - "Different behavior across similar screens"
+      - title: "Validation difficulty"
+        bullets:
+          - "Non-deterministic output"
+          - "Recurring issue patterns"
+          - "Need for scenario-based testing"
+      - title: "Product risk"
+        bullets:
+          - "Lower trust in AI output"
+          - "Harder handoff to product values"
+          - "More manual correction required"
+    image:
+      src: "../../assets/textshadow-ai-challenge-inconsistent-output.png"
+      alt: "AI-generated text shadow outputs showing inconsistent behavior across similar UI contexts"
+  - id: "section-approach"
+    number: "02"
+    kicker: "Product Goal"
+    title: "Make AI-generated text shadow predictable, consistent, and product-ready"
+    paragraphs:
+      - text: "The expected result was not perfect automation. The goal was to improve reliability and make AI behavior easier to understand, test, and refine."
+      - text: "AI should not only generate an output. It should follow product logic that can be tested, improved, and connected to user control."
+    subsections:
+      - title: "1. Apply with intent"
+        bullets:
+          - "Apply text shadow only when it supports readability or clear visual emphasis"
+          - "Avoid using text shadow as default decoration"
+      - title: "2. Reduce inconsistency"
+        bullets:
+          - "Make similar UI contexts produce more similar behavior"
+          - "Guide AI toward predefined presets instead of arbitrary free-form values"
+      - title: "3. Support validation"
+        bullets:
+          - "Create a repeatable process for reviewing AI behavior"
+          - "Use validation results to refine rules and prompts"
+  - id: "section-define-rules"
+    number: "03"
+    kicker: "Rule-Based Solution"
+    title: "A rule-based system for when, where, and how AI should use text shadow"
+    paragraphs:
+      - text: "Designers can judge readability, contrast, and visual emphasis by looking at the UI. AI needs these decisions to be expressed as clear rules, conditions, and constraints."
+      - text: "Instead of allowing arbitrary shadow values, the system guided AI through predefined design rules and preset logic."
+    subsections:
+      - title: "Apply shadow when"
+        bullets:
+          - "Text appears on image backgrounds"
+          - "Text has low contrast with the background"
+          - "Headings need stronger visual separation"
+          - "A hero section needs better readability"
+      - title: "Avoid shadow when"
+        bullets:
+          - "Small text"
+          - "Dense UI"
+          - "Labels and navigation items"
+          - "Helper text, error messages, and functional UI text"
+      - title: "Use preset logic"
+        bullets:
+          - "Minimal: subtle readability support"
+          - "Soft: gentle visual separation"
+          - "Hard: stronger contrast and emphasis"
+          - "Glow: decorative or expressive effect"
+    image:
+      src: "../../assets/textshadow-ai-rule-system.png"
+      alt: "Diagram showing context-aware rules for text shadow usage"
+    action:
+      label: "Detail"
+      modalTarget: "define-rules"
+  - id: "section-training"
+    number: "04"
+    kicker: "Prompt Integration"
+    title: "Splitting guidance into style logic and technical execution"
+    paragraphs:
+      - text: "After the behavior rules were defined, they were translated into structured prompt logic in collaboration with AI engineers."
+      - text: "The split made AI behavior easier to manage because one layer explained design intent while the other controlled execution."
+    subsections:
+      - title: "Style guideline"
+        bullets:
+          - "Readability"
+          - "Visual hierarchy"
+          - "Background complexity"
+          - "Text importance"
+      - title: "Technical guideline"
+        bullets:
+          - "Preset mapping"
+          - "Supported shadow values"
+          - "Product constraints"
+          - "Canvas compatibility"
+    image:
+      src: "../../assets/textshadow-ai-system-prompt-integration.png"
+      alt: "System prompt integration for AI text shadow behavior"
+    action:
+      label: "Detail"
+      modalTarget: "training"
+  - id: "section-evaluation"
+    number: "05"
+    kicker: "Scenario-Based Validation"
+    title: "Testing behavior patterns, not one successful output"
+    paragraphs:
+      - text: "AI behavior was validated across different prompt conditions and UI contexts. The goal was to evaluate patterns across repeated outputs, not only check one result."
+    subsections:
+      - title: "Evaluation process"
+        bullets:
+          - "Prompts without text shadow instructions"
+          - "Generic text shadow requests"
+          - "Specific presets such as Soft, Hard, and Glow"
+          - "Hero banners with image backgrounds"
+          - "Dense UI screens where text shadow should be avoided"
+      - title: "Evaluation criteria"
+        bullets:
+          - "Applied when needed"
+          - "Avoided when it reduced clarity"
+          - "Correct preset selected"
+          - "Visible enough to support readability"
+          - "Mapped to product values"
+    image:
+      src: "../../assets/textshadow-ai-output-evaluation.png"
+      alt: "Diagram showing scenario-based evaluation of AI-generated text shadow output"
+    action:
+      label: "Detail"
+      modalTarget: "evaluation"
+  - id: "section-iteration-loop"
+    number: "06"
+    kicker: "Results and Learnings"
+    title: "AI-generated text shadow became easier to evaluate, refine, and connect to the product"
+    paragraphs:
+      - text: "The rule-based system improved the consistency of AI-generated text shadow behavior. Output became easier to evaluate, easier to refine, and easier to connect with the product canvas."
+      - text: "AI could generate text shadow, but it did not know how to use it reliably. This work translated design judgment into structured rules, prompt logic, and repeated validation so AI behavior became more predictable and product-ready."
+    subsections:
+      - title: "Results"
+        bullets:
+          - "~70% directional system reliability"
+          - "Reduced missing, weak, or incorrect shadow behavior"
+          - "Clearer validation and prioritization"
+      - title: "Learnings"
+        bullets:
+          - "AI needs product rules"
+          - "Design logic must be simplified"
+          - "Validation must be scenario-based"
+          - "Product constraints matter"
+    image:
+      src: "../../assets/textshadow-ai-iteration-loop.png"
+      alt: "Diagram showing the continuous loop of defining rules, training the system, evaluating outputs, and refining AI behavior"
+modals:
+  - id: "define-rules"
+    title: "Define Rules"
+    closeLabel: "Close"
+    hero:
+      kicker: "Define Rules"
+      title: "Translating design principles into structured rules"
+    sections:
+      - id: "modal-define-rules-approach"
+        number: "01"
+        kicker: "Rule Definition Approach"
+        title: "Rules are based on design practice and AI behavior"
+        paragraphs:
+          - text: "Rules are defined using three key inputs:"
+        bullets:
+          - label: "Design standards"
+            text: "UI/UX principles for readability and visual hierarchy."
+          - label: "Market patterns"
+            text: "Common text shadow usage across digital products."
+          - label: "Pre-training AI outputs"
+            text: "Common mistakes and inconsistent AI behavior."
+        afterBullets:
+          - text: "This helps ensure that rules are based on both design best practices and real system behavior."
+        images:
+          - src: "../../assets/textshadow-ai-rule-inputs-design-standard.png"
+            alt: "Diagram showing inputs used to define AI behavior rules"
+          - src: "../../assets/textshadow-ai-rule-inputs-market-patterns.png"
+            alt: "Diagram showing inputs used to define AI behavior rules"
+          - src: "../../assets/textshadow-ai-rule-inputs-retraining.png"
+            alt: "Diagram showing inputs used to define AI behavior rules"
+      - id: "modal-define-rules-structure"
+        number: "02"
+        kicker: "Rule Structure"
+        title: "A structured framework for AI behavior"
+        paragraphs:
+          - text: "Rules are organized into a clear framework:"
+        bullets:
+          - label: "When to use (Apply / Avoid)"
+            text: "— Defines intent"
+          - label: "How to use (Preset + Constraints)"
+            text: "— Defines execution"
+          - label: "Where to use (Decorative vs Product UI)"
+            text: "— Defines scope"
+          - label: "How it connects (System mapping)"
+            text: "— Defines implementation"
+        subsections:
+          - title: "Key rule areas"
+            bullets:
+              - label: "Core Principle"
+                text: "— Intentional, minimal, and context-aware usage"
+              - label: "When to Apply Shadow"
+                text: "— Low contrast backgrounds and key emphasis"
+              - label: "When to Avoid Shadow"
+                text: "— Small text and dense UI"
+              - label: "Visual & Technical Constraints"
+                text: "— Opacity, blur, color, and spacing"
+              - label: "Decorative Usage"
+                text: "— Limited non-functional usage cases"
+        image:
+          src: "../../assets/textshadow-ai-rule-inputs-rule-structure.png"
+          alt: "Structured AI behavior rule framework for text shadow, including apply, avoid, visual constraint, and decorative usage logic"
+      - id: "modal-define-rules-highlight"
+        number: "03"
+        kicker: "Outcome"
+        highlight: "This framework turns subjective design decisions into a scalable system that can be applied consistently by both AI and users."
+  - id: "training"
+    title: "Training"
+    closeLabel: "Close"
+    hero:
+      kicker: "Training"
+      title: "From structured rules to AI behavior"
+    sections:
+      - id: "modal-training-rule-simplification"
+        number: "01"
+        kicker: "Rule Simplification"
+        title: "Design → Usable logic"
+        paragraphs:
+          - text: "Design rules are simplified into clear decision logic to make design intent easier to apply consistently."
+        subsections:
+          - title: "Simplified rules"
+            bullets:
+              - "Use text shadow intentionally and sparingly"
+              - "Apply only for readability or emphasis"
+              - "Prioritize headings and highlighted content"
+              - "Avoid small text and dense UI"
+        afterSubsections:
+          - text: "This helps make design intent clear, scalable, and ready for AI execution."
+        image:
+          src: "../../assets/textshadow-ai-rule-simplification.png"
+          alt: "Design rules simplified into practical decision logic for AI text shadow training"
+      - id: "modal-training-system-prompt"
+        number: "02"
+        kicker: "System Prompt Integration"
+        title: "Logic → AI behavior"
+        paragraphs:
+          - text: "Simplified rules are translated into structured system prompts in collaboration with AI engineers."
+          - text: "These prompts help AI understand context and apply text shadow more consistently."
+        subsections:
+          - title: "Prompt structure"
+            bullets:
+              - label: "Style Guideline (Strategy & Usage)"
+                text: "Defines when and where text shadow should be applied."
+              - label: "Technical Guideline (Codegen)"
+                text: "Defines presets, constraints, and rendering rules."
+        afterSubsections:
+          - text: "Together, these prompts ensure that AI outputs follow structured logic instead of arbitrary styling."
+        image:
+          src: "../../assets/textshadow-ai-system-prompt-integration.png"
+          alt: "Simplified text shadow logic translated into structured system prompts for AI behavior"
+      - id: "modal-training-highlight"
+        number: "03"
+        kicker: "Outcome"
+        highlight: "This process transforms design knowledge into executable AI behavior."
+  - id: "evaluation"
+    title: "Evaluation"
+    closeLabel: "Close"
+    hero:
+      kicker: "Evaluation"
+      title: "Testing, diagnosing, and improving AI output"
+    sections:
+      - id: "modal-evaluation-test-case-coverage"
+        number: "01"
+        kicker: "Test Case Coverage"
+        title: "Testing AI behavior across real scenarios"
+        paragraphs:
+          - text: "Test cases cover different prompt conditions:"
+        bullets:
+          - "No text shadow instruction"
+          - "Generic text shadow requests"
+          - "Preset-specific requests (Soft, Hard, Glow)"
+          - "UI styles that implicitly require shadow"
+        afterBullets:
+          - text: "This helps evaluate AI behavior across realistic usage scenarios."
+        image:
+          src: "../../assets/textshadow-ai-test-case-coverage.png"
+          alt: "Diagram showing AI test coverage across prompts and UI contexts"
+      - id: "modal-evaluation-output-observation"
+        number: "02"
+        kicker: "Output Observation"
+        title: "Reviewing output behavior"
+        paragraphs:
+          - text: "Generated outputs are reviewed on canvas to identify recurring issues:"
+        bullets:
+          - "Missing shadow"
+          - "Incorrect preset selection"
+          - "Overuse or underuse of shadow"
+          - "Inconsistent visual quality"
+        afterBullets:
+          - text: "The focus is on identifying behavior patterns, not isolated errors."
+        image:
+          src: "../../assets/textshadow-ai-output-observation.png"
+          alt: "Diagram showing AI output review and behavior observation"
+      - id: "modal-evaluation-issue-classification"
+        number: "03"
+        kicker: "Issue Classification"
+        title: "Diagnosing root causes"
+        paragraphs:
+          - text: "Issues are grouped into structured categories to identify root causes and guide improvements."
+        subsections:
+          - title: "Common issue groups"
+            bullets:
+              - "Weak visual separation"
+              - "Incorrect or missing shadow behavior"
+              - "Low-intensity shadow output"
+        afterSubsections:
+          - text: "This helps improve prioritization and refinement efficiency."
+        images:
+          - src: "../../assets/textshadow-ai-issue-classification-01.png"
+            alt: "Diagram showing issue classification for AI behavior problems"
+          - src: "../../assets/textshadow-ai-issue-classification-02.png"
+            alt: "Diagram showing issue classification for AI behavior problems"
+          - src: "../../assets/textshadow-ai-issue-classification-03.png"
+            alt: "Diagram showing issue classification for AI behavior problems"
+      - id: "modal-evaluation-prioritization-fixing"
+        number: "04"
+        kicker: "Prioritization & Fixing"
+        title: "Prioritizing and refining fixes"
+        paragraphs:
+          - text: "Issues are prioritized based on impact on readability, consistency, and user trust."
+        subsections:
+          - title: "Refinement areas"
+            bullets:
+              - "Improve contrast and visibility rules"
+              - "Refine apply/avoid decision logic"
+              - "Improve preset mapping accuracy"
+              - "Strengthen prompt instructions"
+        image:
+          src: "../../assets/textshadow-ai-prioritization-fixing.png"
+          alt: "Diagram showing prioritization and refinement workflow"
+      - id: "modal-evaluation-refinement-iteration"
+        number: "05"
+        kicker: "Refinement & Iteration"
+        title: "Re-testing and verification"
+        paragraphs:
+          - text: "After refinement:"
+        subsections:
+          - title: "Verification steps"
+            bullets:
+              - "Existing test cases are re-run"
+              - "Known issues are verified"
+              - "Additional edge cases are tested"
+          - title: "Result"
+            paragraphs:
+              - text: "~70% system reliability across:"
+            bullets:
+              - "Preset selection"
+              - "Shadow visibility"
+              - "Mapping to editable UI values"
+            afterBullets:
+              - text: "This process improves consistency while making remaining gaps easier to diagnose and refine."
+        images:
+          - src: "../../assets/textshadow-ai-refinement-verification 01.png"
+            alt: "Diagram showing refinement, re-testing, and verification loop"
+          - src: "../../assets/textshadow-ai-refinement-verification 02.png"
+            alt: "Diagram showing refinement, re-testing, and verification loop"
+          - src: "../../assets/textshadow-ai-refinement-verification 03.png"
+            alt: "Diagram showing refinement, re-testing, and verification loop"
+      - id: "modal-evaluation-highlight"
+        number: "06"
+        kicker: "Continuous Evaluation"
+        highlight: "Test → Observe → Diagnose → Improve → Re-test. Evaluation is a continuous process for improving AI behavior and output quality."
+footer:
+  backLink:
+    label: "Back to Text Shadow AI"
+    href: "../../project.html?id=textshadow-ai#section-solution"
+  backToTopLabel: "Back to top"

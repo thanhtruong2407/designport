@@ -1,0 +1,70 @@
+seo:
+  title: "System Integration: Human-AI Connection | Text Shadow AI Case Study"
+  description: "Sub-page showing how the Text Shadow AI project aligned design intent, AI behavior, and canvas rendering through a mapping layer."
+header:
+  brandLabel: "Thanh Truong"
+  brandHref: "../../index.html#hero"
+breadcrumb:
+  elementId: "breadcrumb-system-integration"
+  items:
+    - label: "Works"
+      href: "../../index.html#work"
+    - label: "Text Shadow AI"
+      href: "../../project.html?id=textshadow-ai"
+    - label: "System Integration"
+hero:
+  title: "Human ↔ AI System Integration"
+  summary: "A system layer connects UX logic, AI behavior, and canvas rendering. This ensures text shadow is consistent, editable, and usable in the product."
+sections:
+  - id: "section-problem"
+    title: "Problem"
+    paragraphs:
+      - text: "AI-generated text shadow was not always usable in real workflows."
+      - text: "Without a connection to the canvas:"
+    bullets:
+      - "Output may not render correctly"
+      - "Users cannot easily edit the result"
+      - "AI behavior may not match product workflows"
+  - id: "section-system-integration"
+    title: "System Integration"
+    paragraphs:
+      - text: "A mapping layer connects UX logic, AI behavior, and canvas rendering."
+    bullets:
+      - "AI output maps to predefined presets"
+      - "Values remain editable in the UI"
+      - "Outputs stay consistent and renderable"
+    cards:
+      - title: "UX → AI"
+        paragraphs:
+          - text: "Design rules and presets define AI behavior."
+        bullets:
+          - "AI follows structured rules"
+          - "Outputs match manual design logic"
+        outcome: "AI understands design intent, not only visual values."
+      - title: "AI → Canvas"
+        paragraphs:
+          - text: "AI output is converted into renderable UI values before rendering."
+        bullets:
+          - "All shadows follow predefined presets"
+          - "Values such as offset, blur, color, and opacity remain visible in the UI"
+        outcome: "Users can inspect, edit, and trust the result."
+    trailingImage:
+      src: "../../assets/textshadow-system-itergration-dual-connect.png"
+      alt: "System integration diagram connecting UX logic, AI behavior, mapping layer, and canvas rendering"
+  - id: "section-outcome"
+    title: "Outcome"
+    paragraphs:
+      - text: "Text shadow becomes:"
+    bullets:
+      - "Renderable on the canvas"
+      - "Editable in the UI"
+      - "Reliable in real workflows"
+    callout:
+      title: "Product takeaway"
+      paragraphs:
+        - "AI output becomes valuable only when it works inside the product system."
+footer:
+  backLink:
+    label: "Back to Text Shadow AI"
+    href: "../../project.html?id=textshadow-ai#section-system-integration"
+  backToTopLabel: "Back to top"

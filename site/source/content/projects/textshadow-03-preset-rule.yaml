@@ -1,0 +1,79 @@
+id: "textshadow-03-preset-rule"
+detail:
+  showcaseImageSrc: "./assets/03-img-textshadow-thumbnail.png"
+  showcaseImageAlt: "Text Shadow preset rule system case study thumbnail"
+  popupSections:
+    -
+      label: "Overview"
+      title: "Making text shadow easier to apply, preview, and control"
+      body:
+        - "Text shadow has many values: offset, blur, opacity, color, and context. For many users, controlling these values manually can be slow and hard to predict."
+        - "The solution was a preset-based interaction system that keeps the default workflow simple while still allowing users to adjust values when needed."
+    -
+      label: "Challenge"
+      title: "Too many parameters, low confidence"
+      body:
+        - "Text shadow requires multiple parameters such as offset, opacity, color, and blur. For non-designers, this makes the feature difficult to understand and use."
+        - "Users struggle to predict the final result and make confident decisions."
+      imageSrc: "./assets/03-textshadow-solution-ui-challenge.png"
+      imageAlt: "Text shadow UI challenge with multiple parameters"
+    -
+      label: "Approach"
+      title: "Preset-based interaction"
+      body:
+        - "Instead of showing all parameters by default, the system provides predefined presets: None, Minimal, Soft, Hard, Glow, and Custom (Manual control)."
+      subsections:
+        -
+          title: "Users can"
+          bullets:
+            - "Select a preset"
+            - "Preview the result instantly"
+            - "Customize values when needed"
+      imageSrc: "./assets/03-textshadow-preset-core-idea-outcomes.png"
+      imageAlt: "Core idea and outcomes of the text shadow preset system"
+    -
+      label: "Formula System"
+      title: "Preset values scale with text properties"
+      body:
+        - "The preset system does not treat shadow values as one fixed style. Shadow behavior changes based on text properties such as font size and font weight."
+        - "This keeps results more consistent across headings, smaller text, and different canvas contexts."
+      imageSrc: "./assets/03-textshadow-preset-formula-1.png"
+      imageAlt: "Text shadow preset formula based on font size"
+    -
+      label: "Behavior System"
+      title: "User changes trigger automatic shadow recalculation"
+      body:
+        - "Shadow values update dynamically when users change presets or modify text properties."
+        - "**Flow:** User updates → System recalculates → Shadow updates."
+        - "This maintains visual consistency automatically."
+      imageSrc: "./assets/03-textshadow-preset-behavior.png"
+      imageAlt: "Behavior system flow for text shadow preset updates"
+      bottomImageGridCols: 2
+      bottomImages:
+        -
+          src: "./assets/03-textshadow-solution-fixed-style.png"
+          alt: "Fixed text shadow style example"
+        -
+          src: "./assets/03-textshadow-solution-apply-preset.png"
+          alt: "Applying a text shadow preset example"
+    -
+      label: "UI Design"
+      title: "Translating systems into intuitive interactions"
+      body:
+        - "The UI translates the preset system into a simple and predictable interaction model."
+      columns:
+        -
+          title: "Interaction Design"
+          body: "Users can apply presets directly on the canvas, preview results instantly, and understand the current selection through clear states and feedback."
+          coverImageSrc: "./assets/03-textshadow-ui-states.png"
+          coverImageAlt: "Editable text shadow UI states"
+        -
+          title: "System Integration"
+          body: "The UI aligns text shadow behavior with typography settings, theme configuration, and existing text features."
+          coverImageSrc: "./assets/03-textshadow-ui-integration.png"
+          coverImageAlt: "Text shadow UI integrated with canvas preview"
+        -
+          title: "Visual Validation"
+          body: "Text shadow was tested on: light backgrounds, dark backgrounds, and image backgrounds. Validation focused on: readability, visual consistency, and reducing visual noise."
+          coverImageSrc: "./assets/03-textshadow-ui-validation.png"
+          coverImageAlt: "Text shadow UI validation across light and dark backgrounds"

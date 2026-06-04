@@ -1,0 +1,197 @@
+seo:
+  title: "Human Branch: UX/UI System | Text Shadow AI Case Study"
+  description: "Sub-page for the human UX/UI system branch of the Text Shadow AI behavior case study."
+header:
+  brandLabel: "Thanh Truong"
+  brandHref: "../../index.html#hero"
+breadcrumb:
+  elementId: "breadcrumb-human"
+  items:
+    - label: "Works"
+      href: "../../index.html#work"
+    - label: "Text Shadow AI"
+      href: "../../project.html?id=textshadow-ai"
+    - label: "Human Branch"
+hero:
+  title: "UX/UI System (Human Branch)"
+  summary: "A preset-based interaction system that gives users editable text shadow controls and real-time canvas preview, making the output more predictable and controllable."
+sections:
+  - id: "section-challenge"
+    number: "01"
+    kicker: "Challenge"
+    title: "Too many parameters, low confidence"
+    paragraphs:
+      - text: "Text shadow requires multiple parameters such as offset, opacity, color, and blur. For non-designers, this makes the feature difficult to understand and use."
+      - text: "Users struggle to predict the final result and make confident decisions."
+    image:
+      src: "../../assets/textshadow-solution-ui-challenge.png"
+      alt: "UI challenge illustration showing multiple text shadow parameters that make the feature difficult to understand and use"
+  - id: "section-approach"
+    number: "02"
+    kicker: "Approach"
+    title: "Preset-based interaction"
+    paragraphs:
+      - text: "Instead of showing all parameters by default, the system provides predefined presets: None, Minimal, Soft, Hard, and Glow."
+    subsections:
+      - title: "Users can"
+        bullets:
+          - "Select a preset"
+          - "Preview the result instantly"
+          - "Customize values when needed"
+    afterSubsections:
+      - text: "This keeps the experience simple while still supporting advanced control."
+    image:
+      src: "../../assets/textshadow-solution-challenge-approach.png"
+      alt: "Illustration mapping the text shadow challenge to the preset-based approach with options None, Minimal, Soft, Hard, Glow, and customization"
+    imagePosition: "end"
+  - id: "section-preset-system"
+    number: "03"
+    kicker: "Preset System Design"
+    title: "From visual decisions to system rules"
+    paragraphs:
+      - text: "Text shadow behavior is converted into structured, rule-based presets. Each preset follows predefined values and scales across different contexts."
+      - text: "This creates consistent and predictable outputs."
+    image:
+      src: "../../assets/textshadow-solution-preset-system-design.png"
+      alt: "Diagram showing how text shadow visual patterns are converted into structured, rule-based presets that scale across different contexts"
+    action:
+      label: "Detail"
+      modalTarget: "preset-detail"
+  - id: "section-ui-design"
+    number: "04"
+    kicker: "UI Design"
+    title: "Simple and predictable interactions"
+    paragraphs:
+      - text: "Users can apply presets directly on the canvas and preview results in real time."
+      - text: "The preset list remains the primary interaction model, while detailed parameters are only shown during customization."
+      - text: "This keeps the default workflow lightweight and easy to use."
+    image:
+      src: "../../assets/textshadow-solution-ui-design.png"
+      alt: "UI mockups showing the preset-based text shadow control with real-time canvas preview and an option to customize underlying values"
+    action:
+      label: "Detail"
+      modalTarget: "ui-design"
+  - id: "section-validation"
+    number: "05"
+    kicker: "Preset Testing & Validation"
+    title: "Validating rendering accuracy"
+    paragraphs:
+      - text: "Testing focused on ensuring that text shadow rendered correctly based on the defined preset rules."
+      - text: "Manual testing and AI output validation were conducted across multiple iterations to improve consistency and accuracy."
+    image:
+      src: "../../assets/textshadow-solution-validating.png"
+      alt: "Validation matrix showing manual and AI-generated text shadow outputs tested against the defined preset rules across multiple iterations"
+modals:
+  - id: "preset-detail"
+    title: "Preset System Design"
+    closeLabel: "Close"
+    hero:
+      kicker: "Preset System Design"
+      title: "From visual patterns to computable rules"
+    sections:
+      - number: "01"
+        title: "Core Concept"
+        paragraphs:
+          - text: "Text shadow is treated as a rule-based system, not a fixed visual style."
+          - text: "The goal is to convert subjective visual decisions into structured logic for both UX and AI consistency."
+        image:
+          src: "../../assets/textshadow-solution-fixed-style.png"
+          alt: "Diagram showing text shadow treated as a rule-based system instead of a fixed visual style"
+      - number: "02"
+        title: "Core Idea & Outcomes"
+        paragraphs:
+          - lead: "Core Idea"
+            suffix: ": Transform visual intuition into scalable, rule-based presets."
+          - lead: "Outcomes"
+            suffix: ": Simplified selection, consistent output, and a shared language between UX and AI."
+        image:
+          src: "../../assets/textshadow-preset-core-idea-outcomes.png"
+          alt: "Diagram showing how visual intuition is transformed into rule-based presets that produce simplified selection, consistent output, and a shared language for AI"
+        imagePosition: "end"
+      - number: "03"
+        title: "Preset & Formula System"
+        paragraphs:
+          - lead: "Presets"
+            suffix: ": Minimal for subtle depth, Soft for gentle shadow, Hard for strong emphasis, and Glow for dramatic effect."
+          - text: "Each preset represents a specific visual intention."
+          - lead: "Formula System"
+            suffix: ": Shadow values are calculated based on font size and font weight."
+          - lead: "Example logic"
+            suffix: ": Offset scales with font size, blur adjusts based on visual density, and opacity stays controlled for readability."
+          - text: "This ensures consistent rendering across different contexts."
+        images:
+          - src: "../../assets/textshadow-preset-formula-1.png"
+            alt: "Formula System part 1 — preset definitions and how they map to mathematical rules based on font size and weight"
+          - src: "../../assets/textshadow-preset-formula-2.png"
+            alt: "Formula System part 2 — example logic showing offset scaling, blur adjustment, and controlled opacity across different contexts"
+          - src: "../../assets/textshadow-solution-apply-preset.png"
+            alt: "UI example showing how users apply a text shadow preset before the system calculates detailed shadow values"
+        imagesPosition: "end"
+      - number: "04"
+        title: "Behavior System"
+        paragraphs:
+          - text: "Shadow values update dynamically when users change presets or modify text properties."
+          - lead: "Flow"
+            suffix: ": User updates → System recalculates → Shadow updates."
+          - text: "This maintains visual consistency automatically."
+        image:
+          src: "../../assets/textshadow-preset-behavior.png"
+          alt: "Behavior System diagram showing how shadow values dynamically update when users change presets or modify text properties"
+        imagePosition: "end"
+      - number: "05"
+        title: "System Impact"
+        paragraphs:
+          - text: "Text shadow affects multiple typography settings across the system."
+          - text: "Existing typography features were reviewed to ensure consistent integration and avoid fragmented behavior."
+          - text: "Without a structured preset system, text shadow becomes inconsistent and difficult to scale."
+        image:
+          src: "../../assets/textshadow-preset-system-impact.png"
+          alt: "System Impact diagram showing how text shadow integrates with typography settings in theme configuration to maintain consistency across the product"
+  - id: "ui-design"
+    title: "UI Design"
+    closeLabel: "Close"
+    hero:
+      kicker: "UI Design"
+      title: "Translating systems into intuitive interactions"
+    sections:
+      - number: "01"
+        title: "Interaction Design"
+        paragraphs:
+          - text: "The UI translates the preset system into a simple and predictable interaction model."
+          - lead: "Users can"
+            suffix: ": apply presets directly on the canvas, preview results instantly, and understand the current selection through clear states and feedback."
+          - text: "This makes complex visual logic easier to use and control."
+        images:
+          - src: "../../assets/textshadow-ui-states.png"
+            alt: "UI showing the four interaction states for text shadow controls — Default, Hover, Pressed, and Active"
+          - src: "../../assets/textshadow-ui-feedback.png"
+            alt: "UI showing immediate visual feedback and clear selection status when a preset is applied"
+        imagesPosition: "end"
+      - number: "02"
+        title: "System Integration"
+        paragraphs:
+          - lead: "The UI aligns text shadow behavior with"
+            suffix: ": typography settings, theme configuration, and existing text features."
+          - text: "This keeps the feature consistent across the product."
+        image:
+          src: "../../assets/textshadow-ui-integration.png"
+          alt: "Diagram showing UI design alignment with the typography system, theme configuration, and existing text features"
+      - number: "03"
+        title: "Visual Validation"
+        paragraphs:
+          - lead: "Text shadow was tested on"
+            suffix: ": light backgrounds, dark backgrounds, and image backgrounds."
+          - lead: "Validation focused on"
+            suffix: ": readability, visual consistency, and reducing visual noise."
+          - text: "The goal was to ensure reliable results across real usage scenarios."
+        image:
+          src: "../../assets/textshadow-ui-validation.png"
+          alt: "Visual validation showing text shadow tested on light, dark, and image backgrounds while maintaining readability and consistent appearance"
+        imagePosition: "end"
+      - number: "04"
+        highlight: "A well-designed UI is not only about interaction, but about ensuring that the output works in real-world contexts."
+footer:
+  backLink:
+    label: "Back to Text Shadow AI"
+    href: "../../project.html?id=textshadow-ai#section-solution"
+  backToTopLabel: "Back to top"

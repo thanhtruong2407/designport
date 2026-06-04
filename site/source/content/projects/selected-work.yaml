@@ -1,0 +1,145 @@
+featuredProjects:
+  - id: "hu"
+    isAvailable: true
+    thumb: "HU"
+    thumbImageSrc: "./assets/hu-thumbnail.png"
+    thumbImageAlt: "Automotive in-vehicle display project thumbnail"
+    role: "Project Management"
+    hideDetailRole: true
+    title: "Automotive In-Vehicle Display"
+    summary: "Fixed deadline, no baseline data. Built an estimation system and optimized review flow to deliver 34 spec files on time with ~90% client satisfaction."
+    tags:
+      - label: "Project Management"
+        accent: true
+      - label: "Process Design"
+      - label: "Delivery"
+      - label: "Stakeholder Comms"
+    navIndex: "01 / Works"
+    roleDetail: "Sub-lead · 70% Project Management · 30% Spec Writing"
+    roleContribution: ""
+    description: "Fixed deadline, no baseline data. Built an estimation system and optimized review flow to deliver 34 spec files on time with ~90% client satisfaction."
+    company: "FPT Software"
+    timeline: "2024"
+    duration: "6 months"
+    detailFile: "./projects/hu.js"
+
+  - id: "textshadow-01-main"
+    isAvailable: true
+    thumb: "01"
+    thumbImageSrc: "./assets/01-home-prj-thumbnail-textshadow.png"
+    thumbImageAlt: "Text Shadow AI main case study thumbnail"
+    role: "AI Feature / Main Case Study"
+    hideDetailRole: true
+    title: "Text Shadow AI"
+    summary: "Make AI text shadow controllable. Connect the AI, UI controls, and canvas so users can edit it."
+    tags:
+      - label: "AI"
+        accent: true
+      - label: "Product Behavior"
+      - label: "UX System"
+      - label: "Canvas Mapping"
+    navIndex: "02 / Works"
+    roleDetail: "Feature ownership · AI Feature Rule Definition"
+    roleContribution: ""
+    description: "Text shadow improves readability on complex backgrounds, but AI-generated output needed clearer behavior logic and product support.\n\nThis case study frames the work as a product system: UX/UI controls, AI behavior rules, and canvas rendering working together to make output consistent, editable, and usable."
+    company: "VISILY.AI"
+    timeline: "2026"
+    duration: "1 month"
+    detailFile: "./projects/textshadow-01-main.js"
+
+  - id: "textshadow-02-ai-behavior"
+    isAvailable: true
+    thumb: "02"
+    thumbImageSrc: "./assets/02-home-prj-thumbnail-textshadow.png"
+    thumbImageAlt: "AI behavior system deep dive thumbnail"
+    role: "AI Feature / Deep Dive of Text Shadow"
+    title: "AI Behavior System"
+    titleTag: "AI logic"
+    summary: "Fix inconsistent AI output. Add rules and test scenarios so AI makes reliable decisions."
+    tags:
+      - label: "AI Behavior"
+        accent: true
+      - label: "Validation"
+      - label: "Prompt Logic"
+      - label: "Product Rules"
+    navIndex: "03 / Works"
+    roleDetail: "Feature ownership · AI Behavior Definition"
+    roleContribution: ""
+    description: "This is a deep dive of the Text Shadow AI main case study.\n\nAI did not always understand when, where, or how to use text shadow correctly. This deep dive shows how design principles, observed AI patterns, and validation scenarios were converted into a clearer behavior system for more predictable AI output."
+    company: "VISILY.AI"
+    timeline: "2026"
+    duration: "1 month"
+    detailFile: "./projects/textshadow-02-ai-behavior.js"
+
+  - id: "textshadow-03-preset-rule"
+    isAvailable: true
+    thumb: "03"
+    thumbImageSrc: "./assets/03-home-prj-thumbnail-textshadow.png"
+    thumbImageAlt: "Preset rule system deep dive thumbnail"
+    role: "AI Feature / Deep Dive of Text Shadow"
+    title: "Preset Rule System"
+    titleTag: "UX/UI"
+    summary: "Too many settings = slow. Use presets for quick control with live preview and custom editing."
+    tags:
+      - label: "Preset System"
+        accent: true
+      - label: "UX Controls"
+      - label: "Rule Logic"
+      - label: "Validation"
+    navIndex: "04 / Works"
+    roleDetail: "Feature ownership · UX System & Rule Logic"
+    roleContribution: ""
+    description: "Text shadow includes multiple values such as offset, opacity, color, and blur, which can be hard for non-designers to control. This deep dive explains how a preset-based interaction system makes text shadow easier."
+    company: "VISILY.AI"
+    timeline: "2026"
+    duration: "1 month"
+    detailFile: "./projects/textshadow-03-preset-rule.js"
+
+  - id: "textshadow-ai"
+    isAvailable: true
+    isHidden: true
+    thumb: "Text"
+    thumbImageSrc: "./assets/home-prj-thumbnail-textshadow.png"
+    thumbImageAlt: "Text shadow AI behavior project thumbnail"
+    role: "AI Feature"
+    title: "Defining AI Behavior for Text Shadow in Design Generation"
+    summary: "Text shadow was inconsistent in AI output -> defined a dual UX and AI behavior system -> made AI-generated shadows more consistent and editable."
+    tags:
+      - label: "AI"
+        accent: true
+      - label: "AI Behavior"
+      - label: "System Design"
+      - label: "Product Thinking"
+    navIndex: "01 / Works"
+    roleDetail: "Feature ownership · AI Behavior Definition · UXUI"
+    roleContribution: ""
+    description: "AI-generated styling was often inconsistent and difficult to control.\n\nThis project defined a dual UX and AI behavior system to help AI apply text shadow more consistently, map outputs into editable UI values, and support real product workflows."
+    company: "VISILY.AI"
+    timeline: "2026"
+    duration: "1 month"
+    detailFile: "./projects/textshadow-ai.js"
+
+  - id: "cihms"
+    isAvailable: true
+    thumb: "PMS"
+    thumbImageSrc: "./assets/home-prj-thumbnail-cihms.png"
+    thumbImageAlt: "CiHMS project thumbnail showing hospitality system interfaces"
+    role: "Hospitality / Platform"
+    title: "Improving Operations in a Complex Hospitality System"
+    summary: "Fragmented workflows across hotel operations increased friction -> restructured system behavior around real tasks -> improved usability, adoption, and delivery confidence at scale."
+    company: "VINHMS (VinGroup)"
+    showcaseImageSrc: "./assets/img-cihms-thumbnail.png"
+    showcaseImageAlt: "CiHMS product mockup overview"
+    tags:
+      - label: "System Design"
+        accent: true
+      - label: "Workflow Strategy"
+      - label: "Cross-functional Delivery"
+    navIndex: "04 / Works"
+    roleDetail: "UX/UI Design · User Research · Design System"
+    description: "Improved workflow structure and cross-module consistency in a 35+ module hospitality platform. This helped operations teams complete core tasks with less friction, lower cognitive load, and stronger adoption."
+    timeline: "2020-2021"
+    duration: "1+ year"
+    detailFile: "./projects/cihms.js"
+
+supportingProjects: []

@@ -1,0 +1,118 @@
+seo:
+  title: "Problem: Generation vs. Usage Gap | Text Shadow AI Case Study"
+  description: "Sub-page exploring the core product problem of the Text Shadow AI case study: AI could output text shadow, but the system could not decide, render, and control it reliably."
+
+header:
+  brandLabel: "Thanh Truong"
+  brandHref: "../../index.html#hero"
+
+breadcrumb:
+  elementId: "breadcrumb-problem"
+  items:
+    - label: "Works"
+      href: "../../index.html#work"
+    - label: "Text Shadow AI"
+      href: "../../project.html?id=textshadow-ai"
+    - label: "Problem"
+
+hero:
+  title: "AI could generate text shadow, but could not apply it consistently"
+  summary: "AI could generate text shadow, but lacked clear design logic and product support. The result was inconsistent behavior, weak context awareness, and outputs that could not be fully rendered or edited in the canvas."
+
+sections:
+  - id: "section-market-reality"
+    number: "01"
+    kicker: "Market Reality"
+    title: "Text shadow is functionally necessary"
+    paragraphs:
+      - text: "Text shadow appears in many modern interfaces when readability becomes a problem."
+      - text: "Common use cases include:"
+    bullets:
+      - label: ""
+        text: "Text on image backgrounds"
+      - label: ""
+        text: "Low-contrast surfaces"
+      - label: ""
+        text: "Dense layouts with weak visual separation"
+    image:
+      src: "../../assets/textshadow-problem-market-reality.png"
+      alt: "Examples of text shadow used on image backgrounds, low-contrast surfaces, and dense layouts"
+    afterImageParagraphs:
+      - text: "Text shadow is not only decorative. It improves readability, visual hierarchy, and text-background separation."
+      - text: "This reveals an important insight: if designers repeatedly use text shadow to solve readability problems, AI systems should be able to generate it consistently and correctly."
+
+  - id: "section-ai-limitation"
+    number: "02"
+    kicker: "AI Limitation"
+    title: "Can generate, but inconsistently"
+    paragraphs:
+      - text: "Testing showed that AI could generate text shadow in the internal code output (DOM), but the behavior was inconsistent."
+    subsections:
+      - title: "Common issues included"
+        bullets:
+          - label: ""
+            text: "Shadow appearing on one screen but missing on similar screens"
+          - label: ""
+            text: "Different shadow values used for similar contexts"
+          - label: ""
+            text: "Missing or incorrect shadows on low-contrast backgrounds"
+    images:
+      - src: "../../assets/textshadow-problem-ai-limitation-missing.png"
+        alt: "AI test result showing text shadow missing where the generated screen needed additional readability support"
+      - src: "../../assets/textshadow-problem-ai-limitation-inconsistency.png"
+        alt: "AI test result showing inconsistent text shadow behavior across similar generated screens"
+      - src: "../../assets/textshadow-problem-ai-limitation-low.png"
+        alt: "AI test result showing text shadow generated with low intensity on a low-contrast background"
+    afterImageSubsections:
+      - title: "The root problem"
+        paragraphs:
+          - text: "The root problem was not generation capability, but missing decision logic."
+          - text: "AI could generate visual output, but it could not:"
+        bullets:
+          - label: ""
+            text: "Understand visual context"
+          - label: ""
+            text: "Decide when shadow was needed"
+          - label: ""
+            text: "Apply consistent rules across screens"
+        afterBullets:
+          - text: "This revealed a key gap: AI needed rule-based logic and contextual reasoning, not only pattern generation."
+
+  - id: "section-product-gap"
+    number: "03"
+    kicker: "Product Gap"
+    title: "Cannot render in canvas"
+    paragraphs:
+      - text: "The Visily canvas could not render text shadow, even though AI could generate it in the internal code layer. This created a system gap between AI generation and product rendering."
+      - text: "As a result:"
+    bullets:
+      - label: ""
+        text: "Text shadow could not be displayed in the canvas"
+      - label: ""
+        text: "Users could not edit or control the output"
+      - label: ""
+        text: "AI-generated results became unusable in the product"
+    image:
+      src: "../../assets/textshadow-problem-product-gap.png"
+      alt: "Diagram showing AI-generated text shadow output existing in the system but not rendered or controllable in the Visily canvas, leaving users with broken functionality"
+    afterImageSubsections:
+      - title: "Impact on non-designers"
+        paragraphs:
+          - text: "This issue had a strong impact on non-designers, who expected AI outputs to work immediately without technical adjustments."
+      - title: "The root problem"
+        paragraphs:
+          - text: "The root problem was system misalignment. AI could generate text shadow, but the canvas architecture did not support rendering it."
+          - text: "This revealed a critical insight: AI capability alone is not enough. The system must connect generation, rendering, and user control to create usable product output."
+    callout:
+      title: "Why all three layers matter"
+      paragraphs:
+        - "The problem was not market demand or AI capability."
+        - "The market needed text shadow for readability. AI could generate it. But the product could not render or support it."
+        - "The real gap was system alignment. Users could generate a feature with AI, but could not see, edit, or use the result."
+        - "This created the opportunity to improve both AI logic and product support together."
+
+footer:
+  backLink:
+    label: "Back to Text Shadow AI"
+    href: "../../project.html?id=textshadow-ai#section-problem"
+  backToTopLabel: "Back to top"

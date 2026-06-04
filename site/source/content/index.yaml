@@ -1,0 +1,229 @@
+seo:
+  title: "Thanh Truong | Product Designer"
+  description: "Portfolio of Truong Huynh Viet Thanh. Product Designer with 6 years of experience in UX/UI design, AI-powered products, user research, and design systems. Specialized in AI feature development and cross-functional delivery."
+
+navigation:
+  - label: "Works"
+    href: "#work"
+  - label: "About"
+    href: "#about"
+  - label: "Experience"
+    href: "#experience"
+  - label: "Skills"
+    href: "#skills"
+  - label: "Contact"
+    href: "#contact"
+
+hero:
+  eyebrow: null
+  name:
+    firstLine: "Truong Huynh"
+    linkedLine: "Viet Thanh"
+  role:
+    from: null
+    to: "Product Designer"
+  summary: "Product Designer with 6 years of experience in UX/UI design, user research, AI-powered features, and design systems. Specialized in AI feature development, behavior definition, and cross-functional delivery."
+  primaryCta:
+    label: "View Works"
+    href: "#work"
+  secondaryCta:
+    label: "Download CV"
+    href: "https://drive.google.com/drive/folders/1J5JO6UmQMPtEPw0BUdYAMBJ950zv0Jum?usp=sharing"
+    download: true
+  contactRow:
+    - label: "Email"
+      value: "thanhtruong2407@gmail.com"
+      href: "mailto:thanhtruong2407@gmail.com"
+    - label: "Phone"
+      value: "+84 932 098 601"
+      href: "tel:+84932098601"
+  experienceBadge: null
+  locationBadge: null
+  portrait:
+    src: "./assets/avatar/profile-image.png"
+    alt: "Portrait of Truong H. Viet Thanh"
+
+sections:
+  work:
+    index: "01 / Works"
+    title: "Works with Product Impact"
+    supportingLabel: "Supporting Works"
+  about:
+    index: "02 / About"
+    title: "Product Designer with AI product and UX/UI background"
+  experience:
+    index: "03 / Experience"
+    title: "Product Designer with Cross-functional Delivery Experience"
+  skills:
+    index: "04 / Skills & Certifications"
+    title: "Design & Product Skills"
+    certificationsLabel: "Certifications"
+    educationLabel: "Education"
+  contact:
+    index: "05 / Contact"
+    title: "Open to Product Designer Roles"
+
+timeline:
+  - company: "Visily.AI"
+    logoText: "VA"
+    logoSrc: "./assets/logo-VA.png"
+    period: "2022 - Present"
+    summary: ""
+    roles:
+      - period: "Nov 2025 - Present"
+        role: "Product Designer"
+        type: "Full-time"
+        keywords: ["AI feature development", "Feature ownership", "UX validation"]
+        points:
+          - "Researched and proposed solutions to enrich core app capabilities, including Design System / UI Kits, Text Shadow, AI Code Generation, and AI Chat-Centric UX."
+          - "Improved AI feature output quality through AI behavior definition, output validation, and system prompting."
+          - "Owned AI-related features end-to-end, from ideation and solution design to validation and release."
+      - period: "2022 - Oct 2025"
+        role: "Product Designer"
+        type: "Freelance"
+        keywords: ["AI training data", "Template design"]
+        points:
+          - "Designed templates to enrich the app asset library for users."
+          - "Provided design data to support AI training."
+  - period: "Mar 2023 - Nov 2025"
+    company: "FPT Software"
+    logoText: "FPT"
+    logoSrc: "./assets/logo-FPT.png"
+    role: "UX/UI Designer"
+    keywords: ["Project coordination", "Research", "Agile delivery"]
+    points:
+      - "Supported project management activities, including stakeholder communication, workflow planning, task coordination, and delivery tracking."
+      - "Supported sprint planning, backlog prioritization, and feature delivery."
+      - "Conducted user research and UX audits; designed workflows and screen specifications."
+  - period: "Jan 2022 - Feb 2023"
+    company: "Topica Edtech Group"
+    logoText: "TOP"
+    logoSrc: "./assets/logo-TOP.png"
+    role: "UX/UI Designer"
+    keywords: ["Research", "Product design", "Usability testing"]
+    points:
+      - "Researched student needs and designed B2C EdTech features for NativeX."
+      - "Conducted business workshops to explore product solutions."
+      - "Conducted usability testing to validate product decisions before launch."
+  - period: "Nov 2020 - Dec 2021"
+    company: "VinHMS (VinGroup)"
+    logoText: "VH"
+    logoSrc: "./assets/logo-VH.png"
+    role: "UX/UI Designer"
+    keywords: ["B2B system design", "Design system", "Workflow design"]
+    points:
+      - "Designed B2B hospitality management workflows, UI screens, and design system components."
+      - "Collaborated with stakeholders to analyze user feedback and improve user experience across modules."
+  - period: "Aug 2018 - Nov 2020"
+    company: "ANTS Programmatic"
+    logoText: "ANTS"
+    logoSrc: "./assets/logo-ANTS.png"
+    role: "UI Designer"
+    keywords: ["UI design", "CMS", "Design system"]
+    points:
+      - "Designed CMS and marketing platform interfaces."
+      - "Created UI screens, screen flows, and design system components."
+
+skillGroups:
+  - ["AI Feature Development", "System Prompting"]
+  - ["Feature Ownership", "Project Coordination", "Stakeholder Communication", "Delivery Tracking"]
+  - ["UX Audit", "User Research", "Design Systems", "Product Specifications"]
+
+certifications:
+  - title: "Certified SAFe® Product Owner / Product Manager"
+    provider: "SAFe by Scaled Agile, Inc."
+    issued: "Issued Nov 2024"
+    credentialId: "09881514-3227"
+    skills: "Management"
+    logoSrc: "./assets/certifications-safe.png"
+    logoType: "safe"
+    showCredential: true
+    credentialImageSrc: "./assets/cerificate-safe-09881514-3227.png"
+  - title: "Introduction to AI and Machine Learning on Google Cloud"
+    provider: "Google Cloud"
+    issued: "Issued Jun 2025"
+    credentialId: "6VC6GTF68TVN"
+    skills: "AI"
+    logoSrc: "./assets/certifications-google.png"
+    logoType: "google-cloud"
+    showCredential: true
+    credentialHref: "https://www.coursera.org/account/accomplishments/verify/6VC6GTF68TVN"
+  - title: "Use Generative AI as Your Thought Partner"
+    provider: "Coursera"
+    issued: "Issued Feb 2025"
+    credentialId: "DDO9ZX6X8O0L"
+    skills: "AI"
+    logoSrc: "./assets/certifications-coursera.png"
+    logoType: "coursera"
+    showCredential: true
+    credentialHref: "https://www.coursera.org/account/accomplishments/verify/DDO9ZX6X8O0L"
+  - title: "AI for Product Management"
+    provider: "Pendo.io"
+    issued: "Issued Apr 2025"
+    skills: "AI"
+    logoSrc: "./assets/certifications-pendo.png"
+    logoType: "pendo"
+    showCredential: true
+    credentialHref: "https://www.credly.com/badges/6a8a0b5d-1b2e-4d10-b88e-be2a37b598f1/linked_in_profile"
+  - title: "Google UX Design"
+    provider: "Google UX Design Professional"
+    credentialId: "6Y38SSFATRG5"
+    skills: "UX Research, User-Centered Design (UCD)"
+    logoSrc: "./assets/certifications-google.png"
+    logoType: "grow-google"
+    showCredential: true
+    credentialHref: "https://www.coursera.org/account/accomplishments/professional-cert/6Y38SSFATRG5"
+
+education:
+  - title: "Bachelor's Degree in Finance and Banking"
+    meta: "University of Economics and Law, 2014"
+    logoSrc: "./assets/education-uel.png"
+  - title: "Advanced Diploma in Multimedia"
+    meta: "Arena Multimedia, 2018"
+    logoSrc: "./assets/education-arena.png"
+
+about:
+  lead: ""
+  paragraphs:
+    - "I am a Product Designer with experience across B2B systems, AI-powered SaaS, and EdTech products. I focus on designing features that are consistent, usable, and grounded in real user needs."
+    - "Working on AI products has shaped how I approach design. I define AI behavior rules, validate outputs, and connect AI capabilities with user workflows — making sure what AI produces is both useful and editable."
+    - "I work best at the intersection of product thinking and design execution — from research and ideation through to delivery and validation."
+  image:
+    src: ""
+    alt: ""
+  focusTags:
+    - "AI Feature Development"
+    - "System Prompting"
+    - "Feature Ownership"
+    - "Project Coordination"
+    - "Stakeholder Communication"
+    - "Delivery Tracking"
+    - "UX Audit"
+    - "User Research"
+    - "Design Systems"
+    - "Product Specifications"
+
+contact:
+  title: "Contact options"
+  text: "Product Designer specializing in AI-powered products and UX systems."
+  items:
+    - label: "Email"
+      value: "thanhtruong2407@gmail.com"
+      href: "mailto:thanhtruong2407@gmail.com"
+      featured: true
+    - label: "Phone"
+      value: "+84 932 098 601"
+      href: "tel:+84932098601"
+      featured: true
+    - label: "LinkedIn"
+      value: "linkedin.com/in/thanhtruong2407"
+      href: "https://linkedin.com/in/thanhtruong2407"
+      featured: false
+    - label: "Location"
+      value: "Ho Chi Minh City, Vietnam"
+      href: null
+      featured: false
+
+footer:
+  text: "Portfolio of Thanh Truong. Product Designer."
+  backToTopLabel: "Back to top"
