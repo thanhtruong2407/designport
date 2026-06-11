@@ -235,6 +235,15 @@ function createSkillGroup(group) {
   if (!group || typeof group !== "object") return "";
   // If it's an array (legacy format), fall back to tag row
   if (Array.isArray(group)) return createSkillTagRow(group);
+  // Titled tag row: { title, tags }
+  if (Array.isArray(group.tags)) {
+    return `
+    <div class="skill-tag-group reveal">
+      ${group.title ? `<h3 class="skill-tag-group-title mb-3 text-[11px] font-semibold uppercase tracking-wide text-brand-600 dark:text-brand-300">${escapeHtml(group.title)}</h3>` : ""}
+      ${createSkillTagRow(group.tags)}
+    </div>
+  `;
+  }
   const items = Array.isArray(group.items) ? group.items : [];
   const itemsHtml = items
     .map((item) => `<p class="skill-desc mt-2 text-sm leading-7 text-slate-600 dark:text-slate-300">${escapeHtml(item)}</p>`)

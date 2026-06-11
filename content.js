@@ -210,22 +210,24 @@ window.portfolioContent = {
       "company": "Visily.AI",
       "logoText": "VA",
       "logoSrc": "./assets/logo-VA.png",
-      "period": "2022 - Present",
+      "period": "2022 - 2026",
       "summary": "",
       "roles": [
         {
           "period": "Nov 2025 - Present",
-          "role": "Product Designer",
+          "role": "Product Designer (AI Focus)",
           "type": "Full-time",
           "keywords": [
             "AI feature development",
             "Feature ownership",
-            "UX validation"
+            "Research"
           ],
           "points": [
-            "Researched and proposed solutions to enrich core app capabilities, including Design System / UI Kits, Text Shadow, AI Code Generation, and AI Chat-Centric UX.",
-            "Improved AI feature output quality through AI behavior definition, output validation, and system prompting.",
-            "Owned AI-related features end-to-end, from ideation and solution design to validation and release."
+            "Owned AI-powered features end-to-end (Text Shadow, Code Generation, Plan Mode) from research and solution design through validation and release, contributing to a team outcome of 85.9% successful task completion (up from 32.1% baseline).",
+            "Validated AI output quality through structured test scenarios covering edge cases, preset mapping, and readability contexts, measurably reducing regeneration rates and improving AI reliability.",
+            "Extended design system components (blur, shadow) to expand the range of AI-generatable styles, closing the quality gap vs. professional design tools.",
+            "Validated Figma-to-Visily component mapping to improve import accuracy and reduce friction for Figma power users migrating to Visily.",
+            "Researched and proposed solutions for Chat-Centric UX and UI Kit, shaping product direction for two key AI-adjacent feature areas."
           ]
         },
         {
@@ -237,8 +239,7 @@ window.portfolioContent = {
             "Template design"
           ],
           "points": [
-            "Designed templates to enrich the app asset library for users.",
-            "Provided design data to support AI training."
+            "Designed templates to enrich the asset library and provided design data to support AI training."
           ]
         }
       ]
@@ -250,14 +251,18 @@ window.portfolioContent = {
       "logoSrc": "./assets/logo-FPT.png",
       "role": "UX/UI Designer",
       "keywords": [
-        "Project coordination",
-        "Research",
-        "Agile delivery"
+        "UX/UI Design",
+        "UX Audit",
+        "User Research",
+        "Project Coordination"
       ],
       "points": [
-        "Supported project management activities, including stakeholder communication, workflow planning, task coordination, and delivery tracking.",
-        "Supported sprint planning, backlog prioritization, and feature delivery.",
-        "Conducted user research and UX audits; designed workflows and screen specifications."
+        "Worked across 13 projects in banking, fintech, insurance, automotive, and enterprise systems for Vietnamese and Japanese clients.",
+        "Contributed as a core UX designer for BIDV's enterprise payment platform: conducted user interviews, designed wireframes and payment workflows, and presented to 10+ stakeholders including C-level for sign-off.",
+        "Designed across 4 banking and fintech projects (BIDV, Sacombank, SCF, Chubb-SA), covering SME banking, payment flows, insurance, and supply chain finance.",
+        "Conducted UX audits across 5 projects (IFTR TMS, ESS, CHE, Costco, Autotrader/KBB), identifying usability issues and proposing improvements.",
+        "Handled spec writing and project coordination for 2 automotive projects (in-vehicle display system and an EV mobile app), tracking tasks and syncing with engineering to keep delivery on track.",
+        "Maintained design system components across projects."
       ]
     },
     {
@@ -272,9 +277,8 @@ window.portfolioContent = {
         "Usability testing"
       ],
       "points": [
-        "Researched student needs and designed B2C EdTech features for NativeX.",
-        "Conducted business workshops to explore product solutions.",
-        "Conducted usability testing to validate product decisions before launch."
+        "Facilitated business workshops to align product, design, and business stakeholders on solutions, bridging user research insights with roadmap decisions for NativeX.",
+        "Researched student needs and designed B2C EdTech features, validated through usability testing before launch."
       ]
     },
     {
@@ -289,8 +293,8 @@ window.portfolioContent = {
         "Workflow design"
       ],
       "points": [
-        "Designed B2B hospitality management workflows, UI screens, and design system components.",
-        "Collaborated with stakeholders to analyze user feedback and improve user experience across modules."
+        "Designed UI, workflows, and design system components across a 35+ module hospitality management platform, improving workflow clarity and reducing task friction for hotel operations teams.",
+        "Collaborated with stakeholders to analyze user feedback and drive usability improvements across modules."
       ]
     },
     {
@@ -305,28 +309,63 @@ window.portfolioContent = {
         "Design system"
       ],
       "points": [
-        "Designed CMS and marketing platform interfaces.",
-        "Created UI screens, screen flows, and design system components."
+        "Designed UI and screen flows for a programmatic advertising CMS platform, establishing component patterns that supported consistent delivery across client-facing tools.",
+        "Built design system components to enable scalable UI production across the platform."
       ]
     }
   ],
   skillGroups: [
-    [
-      "AI Feature Development",
-      "System Prompting"
-    ],
-    [
-      "Feature Ownership",
-      "Project Coordination",
-      "Stakeholder Communication",
-      "Delivery Tracking"
-    ],
-    [
-      "UX Audit",
-      "User Research",
-      "Design Systems",
-      "Product Specifications"
-    ]
+    {
+      "title": "UX/UI Design",
+      "tags": [
+        "Problem Definition",
+        "User Research",
+        "Usability Testing",
+        "UX Audit",
+        "Information Architecture",
+        "Visual Hierarchy",
+        "Wireframing",
+        "Prototyping",
+        "Design Systems",
+        "Mobile Design"
+      ]
+    },
+    {
+      "title": "AI Product Design",
+      "tags": [
+        "AI Feature Ownership",
+        "AI Behavior Definition",
+        "AI Output Validation",
+        "System Prompting",
+        "AI UX Patterns"
+      ]
+    },
+    {
+      "title": "Product Thinking",
+      "tags": [
+        "Feature Ownership",
+        "Problem Framing",
+        "Product Specifications",
+        "User Story Writing",
+        "Backlog Management",
+        "Metrics & KPIs",
+        "Stakeholder Communication",
+        "Delivery Tracking",
+        "Agile / SAFe"
+      ]
+    },
+    {
+      "title": "Domain Expertise",
+      "tags": [
+        "B2B Platforms",
+        "Multi-product Systems",
+        "SaaS",
+        "Fintech",
+        "EdTech",
+        "Automotive",
+        "Hospitality Management"
+      ]
+    }
   ],
   certifications: [
     {
@@ -397,21 +436,23 @@ window.portfolioContent = {
   ],
   aboutLead: "",
   aboutParagraphs: [
-    "I am a Product Designer with experience across B2B systems, AI-powered SaaS, and EdTech products. I focus on designing features that are consistent, usable, and grounded in real user needs.",
-    "Working on AI products has shaped how I approach design. I define AI behavior rules, validate outputs, and connect AI capabilities with user workflows — making sure what AI produces is both useful and editable.",
-    "I work best at the intersection of product thinking and design execution — from research and ideation through to delivery and validation."
+    "I'm a Product Designer with 6 years of experience across AI-powered SaaS, B2B platforms, and multi-product systems. I work from user problems to proposed solutions, then drive features through research, design, and delivery.",
+    "Working on AI products has shaped how I approach design. I define AI behavior rules, validate outputs, and connect AI capabilities with user workflows, making sure what AI produces is both useful and editable.",
+    "Beyond core UX/UI work, I take ownership of features end-to-end, covering feature ownership, stakeholder communication, and Agile delivery, while validating outcomes along the way."
   ],
   focusTags: [
-    "AI Feature Development",
+    "AI Feature Ownership",
+    "AI Behavior Definition",
     "System Prompting",
     "Feature Ownership",
-    "Project Coordination",
+    "Product Specifications",
     "Stakeholder Communication",
     "Delivery Tracking",
     "UX Audit",
     "User Research",
     "Design Systems",
-    "Product Specifications"
+    "Agile / SAFe",
+    "B2B Platforms"
   ],
   contactItems: [
     {
