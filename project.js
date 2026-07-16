@@ -37,6 +37,7 @@ const foundRoot = document.querySelector("[data-project-found]");
 const notFoundRoot = document.querySelector("[data-project-not-found]");
 const imageLightboxRoot = document.querySelector("[data-image-lightbox]");
 const imageLightboxImage = document.querySelector("[data-image-lightbox-image]");
+const imageLightboxTitle = document.querySelector("[data-image-lightbox-title]");
 const imageLightboxCaption = document.querySelector("[data-image-lightbox-caption]");
 const imageLightboxCloseButtons = document.querySelectorAll("[data-image-lightbox-close]");
 
@@ -72,12 +73,20 @@ function escapeHtml(str) {
     .replace(/"/g, "&quot;");
 }
 
+function lightboxData(title, desc) {
+  const t = title ? ` data-lightbox-title="${escapeHtml(title)}"` : "";
+  const d = desc ? ` data-lightbox-desc="${escapeHtml(desc)}"` : "";
+  return t + d;
+}
+
 function renderInlineText(str) {
   return escapeHtml(str).replace(/\*\*([^*]+)\*\*/gu, '<strong class="font-semibold text-slate-900 dark:text-white">$1</strong>');
 }
 
 function usesScopedProjectAsset(src = "") {
-  return /\/0[1-3]-[^/]+\.png$/u.test(src);
+  // Any project content image under assets/ is clickable to open the lightbox,
+  // except thumbnails (home-page cards) and the favicon.
+  return /(^|\/)assets\/[^/]+\.png$/u.test(src) && !/thumbnail/iu.test(src);
 }
 
 function getScopedProjectImage(target) {
@@ -90,7 +99,16 @@ function openImageLightbox(image) {
   if (!imageLightboxRoot || !imageLightboxImage) return;
   imageLightboxImage.src = image.currentSrc || image.src;
   imageLightboxImage.alt = image.alt || "";
-  if (imageLightboxCaption) imageLightboxCaption.textContent = image.alt || "";
+  const title = image.dataset.lightboxTitle || "";
+  const desc = image.dataset.lightboxDesc || image.alt || "";
+  if (imageLightboxTitle) {
+    imageLightboxTitle.textContent = title;
+    imageLightboxTitle.classList.toggle("hidden", !title);
+  }
+  if (imageLightboxCaption) {
+    imageLightboxCaption.textContent = desc;
+    imageLightboxCaption.classList.toggle("hidden", !desc);
+  }
   imageLightboxRoot.classList.remove("hidden");
   imageLightboxRoot.classList.add("flex");
   imageLightboxRoot.setAttribute("aria-hidden", "false");
@@ -106,6 +124,7 @@ function closeImageLightbox() {
   imageLightboxRoot.setAttribute("aria-hidden", "true");
   imageLightboxImage.removeAttribute("src");
   imageLightboxImage.alt = "";
+  if (imageLightboxTitle) imageLightboxTitle.textContent = "";
   if (imageLightboxCaption) imageLightboxCaption.textContent = "";
   document.body.classList.remove("image-lightbox-open");
 }
@@ -481,7 +500,7 @@ function createSectionColumn(column) {
       <h3 class="text-lg font-semibold text-slate-950 dark:text-white">${escapeHtml(column.title || "")}</h3>
       ${branchLabelHtml}
     </div>`;
-  const bodyHtml = column.body ? `<p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">${escapeHtml(column.body)}</p>` : "";
+  const bodyHtml = column.body ? `<p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">${renderInlineText(column.body)}</p>` : "";
   const bulletsHtml = bullets.length ? `<div class="mt-5">${createBulletList(bullets)}</div>` : "";
   const tagHtml = column.tag ? `<span class="mt-5 inline-flex w-fit rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-[11px] font-semibold uppercase text-slate-500 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300">${escapeHtml(column.tag)}</span>` : "";
   const isDeepDiveAction = /^deep dive$/i.test(action?.label || "");
@@ -581,11 +600,19 @@ function createSimpleSectionColumn(column) {
   const iconSvgHtml = column.iconSvg
     ? `<div class="mb-4 flex h-10 w-10 shrink-0 items-center justify-center rounded-[0.75rem] bg-brand-100 text-brand-700 dark:bg-brand-500/15 dark:text-brand-200" aria-hidden="true">${column.iconSvg}</div>`
     : "";
+  const imageSrc = typeof column.image === "string" ? column.image : column.image?.src;
+  const imageHtml = imageSrc
+    ? `<figure class="-mx-5 -mt-5 mb-4 overflow-hidden rounded-t-[1.25rem] sm:-mx-6 sm:-mt-5">
+        <img class="block aspect-[16/10] w-full object-cover" src="${escapeHtml(imageSrc)}" alt="${escapeHtml(column.image?.alt || column.title || "")}"${lightboxData(column.title, column.body)} loading="lazy">
+      </figure>`
+    : "";
   const bodyHtml = column.body ? `<p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">${escapeHtml(column.body)}</p>` : "";
   const bullets = Array.isArray(column?.bullets) ? column.bullets : [];
   const bulletsHtml = bullets.length ? `<div class="mt-5">${createBulletList(bullets)}</div>` : "";
+  const cardClass = column.cardClass ? ` ${column.cardClass}` : "";
   return `
-    <div class="rounded-[1.25rem] border border-slate-200 px-5 py-5 dark:border-slate-800 sm:px-6">
+    <div class="rounded-[1.25rem] border border-slate-200 px-5 py-5 dark:border-slate-800 sm:px-6${cardClass}">
+      ${imageHtml}
       ${iconSvgHtml}
       <h3 class="text-xl font-semibold leading-tight text-slate-950 dark:text-white">${escapeHtml(column.title || "")}</h3>
       ${bodyHtml}
@@ -766,7 +793,7 @@ function createCarousel(section, index) {
                       <p class="mt-3 max-w-3xl text-base leading-8 text-slate-600 dark:text-slate-300">${escapeHtml(slide.description)}</p>
                     </div>
                   ` : ""}
-                  <img class="block w-full" src="${escapeHtml(createCarouselSlideImage(slide))}" alt="${escapeHtml(slide.label || "")}" draggable="false">
+                  <img class="block w-full" src="${escapeHtml(createCarouselSlideImage(slide))}" alt="${escapeHtml(slide.label || "")}"${lightboxData(slide.label, slide.description)} draggable="false">
                 </div>
               </article>
             `).join("")}
@@ -789,7 +816,7 @@ function createSectionImage(section) {
       <img
         class="block w-full"
         src="${escapeHtml(section.imageSrc)}"
-        alt="${escapeHtml(section.imageAlt || section.title || "")}"
+        alt="${escapeHtml(section.imageAlt || section.title || "")}"${lightboxData(section.title, section.imageAlt)}
         loading="lazy"
       >
     </figure>
@@ -807,9 +834,12 @@ function createImageLoop(section) {
   `;
 }
 
-function createStatCard(item) {
+function createStatCard(item, options = {}) {
+  const bgClass = options.white
+    ? "bg-white dark:bg-slate-900/70"
+    : "bg-slate-50 dark:bg-slate-900/70";
   return `
-    <article class="rounded-[1.25rem] border border-slate-200 bg-slate-50 p-5 dark:border-slate-800 dark:bg-slate-900/70">
+    <article class="rounded-[1.25rem] border border-slate-200 ${bgClass} p-5 dark:border-slate-800">
       <p class="text-3xl font-bold text-slate-950 dark:text-white">${escapeHtml(item.value)}</p>
       <p class="mt-2 text-[11px] font-semibold uppercase text-slate-500 dark:text-slate-400">${escapeHtml(item.label)}</p>
       ${item.detail ? `<p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">${escapeHtml(item.detail)}</p>` : ""}
@@ -897,7 +927,7 @@ function createRichSection(section, index) {
                 <div class="mt-6">${body.map((paragraph) => `<p class="mb-5 text-base leading-8 text-slate-600 dark:text-slate-300">${renderInlineText(paragraph)}</p>`).join("")}</div>
               </div>
               <figure class="overflow-hidden rounded-[1.5rem] lg:mx-auto lg:max-w-full">
-                <img class="block w-full" src="${escapeHtml(section.asideImageSrc)}" alt="${escapeHtml(section.asideImageAlt || section.title || "")}" loading="lazy">
+                <img class="block w-full" src="${escapeHtml(section.asideImageSrc)}" alt="${escapeHtml(section.asideImageAlt || section.title || "")}"${lightboxData(section.title, section.asideImageAlt)} loading="lazy">
               </figure>
             </div>`
           : hasSectionHeading ? `<div class="mb-10">
@@ -912,7 +942,8 @@ function createRichSection(section, index) {
             ${body.map((paragraph) => `<p class="mb-5 max-w-4xl text-base leading-8 text-slate-600 dark:text-slate-300">${renderInlineText(paragraph)}</p>`).join("")}`
         }
         ${customHtml ? `<div class="mt-8">${customHtml}</div>` : ""}
-        ${stats.length ? `<div class="mb-8 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">${stats.map(createStatCard).join("")}</div>` : ""}
+        ${stats.length ? `<div class="mb-8 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">${stats.map((s) => createStatCard(s, { white: section.statsCardStyle === "white" })).join("")}</div>` : ""}
+        ${section.tableIntro ? `<p class="mb-5 max-w-4xl text-base leading-8 text-slate-600 dark:text-slate-300">${renderInlineText(section.tableIntro)}</p>` : ""}
         ${steps.length ? `<div class="${columns.length || cards.length || bullets.length ? "mb-8 " : ""}grid gap-4">${steps.map(createStepCard).join("")}</div>` : ""}
         ${columns.length ? (
           section.displayAs === "table"
@@ -974,10 +1005,10 @@ function createRichSection(section, index) {
             ${(section.diagramCaption || section.mermaidCaption) ? `<p class="${(section.diagramLabel || section.mermaidLabel) ? "mt-3" : ""} text-base leading-8 text-slate-600 dark:text-slate-300">${escapeHtml(section.diagramCaption || section.mermaidCaption)}</p>` : ""}
             ${Array.isArray(section.diagramImageLoop) && section.diagramImageLoop.length
               ? `<div class="image-loop image-loop-${section.diagramImageLoop.length} ${(section.diagramLabel || section.mermaidLabel || section.diagramCaption || section.mermaidCaption) ? "mt-6 " : ""}relative w-full">
-                  ${section.diagramImageLoop.map((img, i) => `<img class="image-loop-img image-loop-img-${i + 1} ${i === 0 ? "block w-full" : "absolute inset-0 h-full w-full object-contain"}" src="${escapeHtml(img.src)}" alt="${escapeHtml(img.alt || section.diagramImageAlt || section.diagramLabel || "")}" loading="${i === 0 ? "eager" : "lazy"}">`).join("")}
+                  ${section.diagramImageLoop.map((img, i) => `<img class="image-loop-img image-loop-img-${i + 1} ${i === 0 ? "block w-full" : "absolute inset-0 h-full w-full object-contain"}" src="${escapeHtml(img.src)}" alt="${escapeHtml(img.alt || section.diagramImageAlt || section.diagramLabel || "")}"${lightboxData(section.diagramLabel || section.title, img.alt || section.diagramImageAlt)} loading="${i === 0 ? "eager" : "lazy"}">`).join("")}
                 </div>`
               : section.diagramImageSrc
-                ? `<img class="${(section.diagramLabel || section.mermaidLabel || section.diagramCaption || section.mermaidCaption) ? "mt-6 " : ""}block w-full" src="${escapeHtml(section.diagramImageSrc)}" alt="${escapeHtml(section.diagramImageAlt || section.diagramLabel || section.mermaidLabel || "")}" loading="lazy">`
+                ? `<img class="${(section.diagramLabel || section.mermaidLabel || section.diagramCaption || section.mermaidCaption) ? "mt-6 " : ""}block w-full" src="${escapeHtml(section.diagramImageSrc)}" alt="${escapeHtml(section.diagramImageAlt || section.diagramLabel || section.mermaidLabel || "")}"${lightboxData(section.diagramLabel || section.title, section.diagramImageAlt)} loading="lazy">`
                 : `<div class="mermaid ${(section.diagramLabel || section.mermaidLabel || section.diagramCaption || section.mermaidCaption) ? "mt-6 " : ""}w-full overflow-x-auto">${section.diagramMermaid || section.mermaid}</div>`
             }
           </figure>
@@ -996,7 +1027,8 @@ function createRichSection(section, index) {
             }
           </div>
         ` : ""}
-        ${section.summary ? `<p class="mt-8 max-w-4xl text-base leading-8 text-slate-600 dark:text-slate-300">${escapeHtml(section.summary)}</p>` : ""}
+        ${section.summary ? `<p class="mt-8 max-w-4xl text-base leading-8 text-slate-600 dark:text-slate-300">${renderInlineText(section.summary)}</p>` : ""}
+        ${section.closingNote ? `<p class="mt-5 max-w-4xl text-base leading-8 text-slate-600 dark:text-slate-300">${renderInlineText(section.closingNote)}</p>` : ""}
         ${sectionImage}
         ${bottomImages.length ? `<div class="mt-10 grid gap-6 ${section.bottomImageGridCols === 2 ? "md:grid-cols-2" : ""}">${bottomImages.map((image) => `
           <figure class="overflow-hidden rounded-[1.5rem]">
@@ -1229,6 +1261,7 @@ function renderFound(project) {
     { label: "Timeline", value: project.timeline },
     { label: "Company", value: project.company },
     { label: "Duration", value: project.duration },
+    { label: "Engagement", value: project.engagement },
   ].filter((item) => item.value);
 
   document.title = `${project.title} | Truong H. Viet Thanh`;

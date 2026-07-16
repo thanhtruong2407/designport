@@ -20,3 +20,8 @@ build/
 .vscode/
 .idea/
 *.swp
+
+# Scratch / temp junk
+assets/@@@/
+.fuse_hidden*
+**/.fuse_hidden*

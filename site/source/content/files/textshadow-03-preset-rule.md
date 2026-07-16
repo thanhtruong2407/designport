@@ -30,7 +30,7 @@
 
 ## Showcase
 
-**Image:** `./assets/img-textshadow-thumbnail.png`
+**Image:** `./assets/03-img-textshadow-thumbnail.png`
 
 **Alt:** Text Shadow preset rule system case study thumbnail
 
@@ -92,7 +92,7 @@ Shadow values update dynamically when users change presets or modify text proper
 
 This maintains visual consistency automatically.
 
-**Image:** `./assets/textshadow-preset-behavior.png`
+**Image:** `./assets/03-textshadow-preset-behavior.png`
 
 **Alt:** Behavior system flow for text shadow preset updates
 

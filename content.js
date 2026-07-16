@@ -1,6 +1,34 @@
 window.portfolioContent = {
   featuredProjects: [
     {
+      "id": "scf-vietnam",
+      "isAvailable": true,
+      "thumb": "SCF",
+      "role": "Fintech / Supply Chain Finance",
+      "title": "Designing Credit Access for Vietnam's Small Dealers",
+      "summary": "No collateral, no branch visit. I turned invoice history into proof of credit and made two banking systems work as one flow. 300+ dealers approved.",
+      "tags": [
+        {
+          "label": "Fintech",
+          "accent": true
+        },
+        {
+          "label": "Supply Chain Finance"
+        }
+      ],
+      "navIndex": "01 / Works",
+      "roleDetail": "Product Designer · Multi-party System · Fintech",
+      "roleContribution": "Outsourcing — delivery team had no direct user access and no post-launch data.",
+      "description": "A B2B supply chain finance product that gave 300+ Vietnamese dealers unsecured credit, using invoice history instead of collateral. The hard part wasn't the loan; it was turning two banking systems, two sets of laws, and eight roles into one flow the dealer could trust.",
+      "company": "FPT Software (SCF Vietnam)",
+      "timeline": "2023",
+      "duration": "10 months",
+      "detailFile": "./projects/scf-vietnam.js",
+      "thumbImageSrc": "./assets/scf-thumbnail.png",
+      "thumbImageAlt": "SCF Vietnam supply chain finance project thumbnail",
+      "hideDetailRole": true
+    },
+    {
       "id": "hu",
       "isAvailable": true,
       "thumb": "HU",

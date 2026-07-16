@@ -5,6 +5,8 @@ import { fileURLToPath } from "node:url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const siteRoot = path.resolve(__dirname, "..");
+// Deployed site lives at the repo root (GitHub Pages), not site/public.
+const repoRoot = path.resolve(__dirname, "../..");
 const sourcePath = path.join(siteRoot, "source/content/index.yaml");
 const selectedWorkPath = path.join(siteRoot, "source/content/projects/selected-work.yaml");
 const textShadowMainCaseStudyPath = path.join(siteRoot, "source/content/projects/textshadow-01-main.yaml");
@@ -12,21 +14,23 @@ const textshadowProjectPath = path.join(siteRoot, "source/content/projects/texts
 const textshadowAiBehaviorSystemPath = path.join(siteRoot, "source/content/projects/textshadow-02-ai-behavior.yaml");
 const textshadowPresetRuleSystemPath = path.join(siteRoot, "source/content/projects/textshadow-03-preset-rule.yaml");
 const cihmsProjectPath = path.join(siteRoot, "source/content/projects/cihms.yaml");
+const scfVietnamProjectPath = path.join(siteRoot, "source/content/projects/scf-vietnam.yaml");
 const textshadowProblemPath = path.join(siteRoot, "source/content/subpages/textshadow-problem.yaml");
 const textshadowHumanPath = path.join(siteRoot, "source/content/subpages/textshadow-human-branch.yaml");
 const textshadowAiPath = path.join(siteRoot, "source/content/subpages/textshadow-ai-branch.yaml");
 const textshadowSystemIntegrationPath = path.join(siteRoot, "source/content/subpages/textshadow-system-integration.yaml");
-const contentPath = path.join(siteRoot, "public/content.js");
-const indexPath = path.join(siteRoot, "public/index.html");
-const textShadowMainCaseStudyDetailPath = path.join(siteRoot, "public/projects/textshadow-01-main.js");
-const textshadowDetailPath = path.join(siteRoot, "public/projects/textshadow-ai.js");
-const textshadowAiBehaviorSystemDetailPath = path.join(siteRoot, "public/projects/textshadow-02-ai-behavior.js");
-const textshadowPresetRuleSystemDetailPath = path.join(siteRoot, "public/projects/textshadow-03-preset-rule.js");
-const cihmsDetailPath = path.join(siteRoot, "public/projects/cihms.js");
-const textshadowProblemOutputPath = path.join(siteRoot, "public/projects/textshadow/problem.html");
-const textshadowHumanOutputPath = path.join(siteRoot, "public/projects/textshadow/human-branch.html");
-const textshadowAiOutputPath = path.join(siteRoot, "public/projects/textshadow/ai-branch.html");
-const textshadowSystemIntegrationOutputPath = path.join(siteRoot, "public/projects/textshadow/system-integration.html");
+const contentPath = path.join(repoRoot, "content.js");
+const indexPath = path.join(repoRoot, "index.html");
+const textShadowMainCaseStudyDetailPath = path.join(repoRoot, "projects/textshadow-01-main.js");
+const textshadowDetailPath = path.join(repoRoot, "projects/textshadow-ai.js");
+const textshadowAiBehaviorSystemDetailPath = path.join(repoRoot, "projects/textshadow-02-ai-behavior.js");
+const textshadowPresetRuleSystemDetailPath = path.join(repoRoot, "projects/textshadow-03-preset-rule.js");
+const cihmsDetailPath = path.join(repoRoot, "projects/cihms.js");
+const scfVietnamDetailPath = path.join(repoRoot, "projects/scf-vietnam.js");
+const textshadowProblemOutputPath = path.join(repoRoot, "projects/textshadow/problem.html");
+const textshadowHumanOutputPath = path.join(repoRoot, "projects/textshadow/human-branch.html");
+const textshadowAiOutputPath = path.join(repoRoot, "projects/textshadow/ai-branch.html");
+const textshadowSystemIntegrationOutputPath = path.join(repoRoot, "projects/textshadow/system-integration.html");
 
 function stripComment(line) {
   let quote = null;
@@ -325,12 +329,23 @@ function updateHtml(html, content) {
       `$1${htmlText(requirePath(content, "hero.summary"))}$2`,
       "hero summary",
     );
-    section = replaceRequired(
-      section,
-      /(<div class="hero-actions[\s\S]*?<a class="[^"]*" href=")[^"]*(">)[\s\S]*?(<\/a>\s*<a class="[^"]*" href=")[^"]*(">)[\s\S]*?(<\/a>)/u,
-      `$1${htmlAttr(requirePath(content, "hero.primaryCta.href"))}$2${htmlText(requirePath(content, "hero.primaryCta.label"))}$3${htmlAttr(requirePath(content, "hero.secondaryCta.href"))}$4${htmlText(requirePath(content, "hero.secondaryCta.label"))}$5`,
-      "hero actions",
-    );
+    const heroSecondaryCta = requirePath(content, "hero.secondaryCta");
+    if (heroSecondaryCta) {
+      section = replaceRequired(
+        section,
+        /(<div class="hero-actions[\s\S]*?<a class="[^"]*" href=")[^"]*(">)[\s\S]*?(<\/a>\s*<a class="[^"]*" href=")[^"]*(">)[\s\S]*?(<\/a>)/u,
+        `$1${htmlAttr(requirePath(content, "hero.primaryCta.href"))}$2${htmlText(requirePath(content, "hero.primaryCta.label"))}$3${htmlAttr(requirePath(content, "hero.secondaryCta.href"))}$4${htmlText(requirePath(content, "hero.secondaryCta.label"))}$5`,
+        "hero actions",
+      );
+    } else {
+      // Single-CTA hero: only the primary action link is present.
+      section = replaceRequired(
+        section,
+        /(<div class="hero-actions[\s\S]*?<a class="[^"]*" href=")[^"]*(">)[\s\S]*?(<\/a>)/u,
+        `$1${htmlAttr(requirePath(content, "hero.primaryCta.href"))}$2${htmlText(requirePath(content, "hero.primaryCta.label"))}$3`,
+        "hero actions",
+      );
+    }
     const heroContactRow = heroContactRowHtml(requirePath(content, "hero.contactRow"));
     if (/class="hero-contact-row[^"]*"/u.test(section)) {
       section = replaceRequired(
@@ -1002,6 +1017,7 @@ function main() {
   const textshadowAiBehaviorSystemProject = readYamlFile(textshadowAiBehaviorSystemPath);
   const textshadowPresetRuleSystemProject = readYamlFile(textshadowPresetRuleSystemPath);
   const cihmsProject = readYamlFile(cihmsProjectPath);
+  const scfVietnamProject = readYamlFile(scfVietnamProjectPath);
   const textshadowProblem = readYamlFile(textshadowProblemPath);
   const textshadowHuman = readYamlFile(textshadowHumanPath);
   const textshadowAi = readYamlFile(textshadowAiPath);
@@ -1020,6 +1036,7 @@ function main() {
   fs.writeFileSync(textshadowAiBehaviorSystemDetailPath, projectDetailJs(textshadowAiBehaviorSystemProject));
   fs.writeFileSync(textshadowPresetRuleSystemDetailPath, projectDetailJs(textshadowPresetRuleSystemProject));
   fs.writeFileSync(cihmsDetailPath, projectDetailJs(cihmsProject));
+  fs.writeFileSync(scfVietnamDetailPath, projectDetailJs(scfVietnamProject));
   fs.writeFileSync(textshadowProblemOutputPath, renderProblemSubpage(textshadowProblem));
   fs.writeFileSync(textshadowHumanOutputPath, renderHumanBranchSubpage(textshadowHuman));
   fs.writeFileSync(textshadowAiOutputPath, renderAiBranchSubpage(textshadowAi));

@@ -1,6 +1,6 @@
 const config = {
   stories: ["../stories/**/*.stories.js"],
-  staticDirs: ["../public"],
+  staticDirs: ["../.."],
   framework: {
     name: "@storybook/html-vite",
     options: {},

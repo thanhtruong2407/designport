@@ -32,13 +32,13 @@ This case study frames the work as a product system: UX/UI controls, AI behavior
 
 ## Showcase
 
-**Image:** `./assets/img-textshadow-thumbnail.png`
+**Image:** `./assets/01-img-textshadow-thumbnail.png`
 
 **Alt:** Text Shadow AI case study thumbnail showing AI-generated text styling
 
 ## Context
 
-### Text shadow became a product behavior, not just a design choice.
+### Text shadow had to become a controllable product behavior
 
 Text shadow improves readability on complex backgrounds such as images, gradients, and low-contrast areas. In an AI-driven product, this behavior needs to be automated, consistent, and visually reliable across different contexts.
 
@@ -58,7 +58,7 @@ Text shadow helps readability on images and low-contrast backgrounds.
 - Common in real product UI
 - Functional, not only decorative
 
-**Image:** `./assets/textshadow-problem-market-reality.png`
+**Image:** `./assets/01-textshadow-problem-market-reality.png`
 
 #### 02. AI limitation
 
@@ -68,7 +68,7 @@ AI could generate text shadow but did not understand when or how to apply it.
 - Weak context awareness
 - Incorrect or missing shadow usage
 
-**Image:** `./assets/textshadow-problem-ai-limitation.png`
+**Image:** `./assets/01-textshadow-problem-ai-limitation.png`
 
 #### 03. Product gap
 
@@ -78,7 +78,7 @@ The design canvas did not support text shadow rendering.
 - No editable text shadow controls
 - Output was not usable in the canvas
 
-**Image:** `./assets/textshadow-problem-product-gap.png`
+**Image:** `./assets/01-textshadow-problem-product-gap.png`
 
 ## Challenges
 
@@ -108,7 +108,7 @@ The system needed predictable output while still allowing users to edit values.
 
 Generated output had to map to product-supported values that could render in the canvas.
 
-**Tag:** Technical Constraint
+**Tag:** System Design
 
 ## Solution
 
@@ -116,9 +116,9 @@ Generated output had to map to product-supported values that could render in the
 
 The solution connected UX/UI controls, AI behavior rules, and a mapping layer for canvas rendering.
 
-#### UX/UI controls
+#### Preset Rule System
 
-**Branch:** Human control
+**Branch:** UX/UI
 
 **What changed:** A preset-based UI helps users apply text shadow quickly and safely.
 
@@ -130,9 +130,9 @@ The solution connected UX/UI controls, AI behavior rules, and a mapping layer fo
 
 **Outcome:** Users do not need to adjust complex shadow values from scratch.
 
-**Image:** `./assets/textshadow-solution-human.png`
+**Image:** `./assets/01-textshadow-solution-human.png`
 
-#### AI behavior system
+#### AI Behavior System
 
 **Branch:** AI logic
 
@@ -146,9 +146,9 @@ The solution connected UX/UI controls, AI behavior rules, and a mapping layer fo
 
 **Outcome:** AI-generated shadows become more predictable.
 
-**Image:** `./assets/textshadow-solution-ai.png`
+**Image:** `./assets/01-textshadow-solution-ai.png`
 
-#### System integration
+#### System Integration
 
 **Branch:** Canvas mapping
 
@@ -162,13 +162,13 @@ The solution connected UX/UI controls, AI behavior rules, and a mapping layer fo
 
 **Outcome:** Text shadow becomes predictable, controllable, and usable.
 
-**Image:** `./assets/textshadow-image-system-integration.png`
+**Image:** `./assets/01-textshadow-image-system-integration.png`
 
 #### End-to-end system
 
 UX controls, AI behavior, and canvas rendering work together so generated output can be used inside the product.
 
-**Image:** `./assets/textshadow-solution-process.png`
+**Image:** `./assets/01-textshadow-solution-process.png`
 
 **Alt:** End-to-end process diagram for Text Shadow AI
 
@@ -192,7 +192,7 @@ AI behavior improves through continuous interaction, evaluation, and refinement 
 
 The core insight was simple: interaction creates feedback. Iteration turns feedback into more accurate, consistent, and reliable AI behavior over time.
 
-**Image:** `./assets/textshadow-image-human-ai.png`
+**Image:** `./assets/01-textshadow-image-human-ai.png`
 
 **Alt:** Human and AI feedback loop illustration
 
@@ -202,7 +202,7 @@ The core insight was simple: interaction creates feedback. Iteration turns feedb
 
 The work improved the structure around AI-generated text shadow. Output became easier to evaluate, map, render, and edit.
 
-**Image:** `./assets/textshadow-results-impact.png`
+**Image:** `./assets/01-textshadow-results-impact.png`
 
 **Alt:** Text Shadow AI results and impact
 
@@ -259,6 +259,14 @@ Users trust AI more when they can adjust and understand the output.
 - **Clearer:** AI behavior rules
 - **Editable:** User control
 - **Aligned:** UX, AI, and canvas
+
+## End Image
+
+**Image:** `./assets/01-textshadow-image-end.png`
+
+**Alt:** Zendesk user feedback message about Visily text shadow improvements, with a note saying no survey, just a user who noticed
+
+**Caption:** A real user noticed the improvement without being asked.
 
 ## Preview Workflow
 

@@ -1,4 +1,4 @@
-import "../public/content.js";
+import "../../content.js";
 
 const portfolioContent = window.portfolioContent || {};
 
