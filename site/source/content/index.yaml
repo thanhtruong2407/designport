@@ -5,8 +5,6 @@ seo:
 navigation:
   - label: "Works"
     href: "#work"
-  - label: "About"
-    href: "#about"
   - label: "Experience"
     href: "#experience"
   - label: "Skills"
@@ -46,18 +44,18 @@ sections:
     title: "Works with Product Impact"
     supportingLabel: "Supporting Works"
   about:
-    index: "02 / About"
+    index: "About"
     title: "Product Designer with AI product and UX/UI background"
   experience:
-    index: "03 / Experience"
+    index: "02 / Experience"
     title: "Product Designer with Cross-functional Delivery Experience"
   skills:
-    index: "04 / Skills & Certifications"
+    index: "03 / Skills & Certifications"
     title: "Design & Product Skills"
     certificationsLabel: "Certifications"
     educationLabel: "Education"
   contact:
-    index: "05 / Contact"
+    index: "04 / Contact"
     title: "Open to Product Designer Roles"
 
 timeline:

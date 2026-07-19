@@ -25,6 +25,7 @@ const metaRoot = document.querySelector("[data-project-meta]");
 const showcaseSectionRoot = document.querySelector("[data-project-showcase-section]");
 const showcaseRoot = document.querySelector("[data-project-showcase]");
 const navigationSectionRoot = document.querySelector("[data-project-navigation-section]");
+const languageToggleRoot = document.querySelector("[data-project-language-toggle]");
 const detailSectionsRoot = document.querySelector("[data-project-detail-sections]");
 const outcomesSectionRoot = document.querySelector("[data-project-outcomes-section]");
 const outcomesLabelRoot = document.querySelector("[data-project-outcomes-label]");
@@ -46,6 +47,111 @@ const { getProjectById, getProjectSections, getAdjacentProjects, loadProjectDeta
 const MOON = "M12 3a9 9 0 1 0 9 9c0-.46-.04-.92-.1-1.36a5.389 5.389 0 0 1-4.4 2.26 5.403 5.403 0 0 1-3.14-9.8c-.44-.06-.9-.1-1.36-.1z";
 const SUN = "M12 7a5 5 0 1 0 0 10A5 5 0 0 0 12 7zm0-4a1 1 0 0 1 1 1v1a1 1 0 0 1-2 0V4a1 1 0 0 1 1-1zm0 16a1 1 0 0 1 1 1v1a1 1 0 0 1-2 0v-1a1 1 0 0 1 1-1zm9-9h1a1 1 0 0 1 0 2h-1a1 1 0 0 1 0-2zM3 11H2a1 1 0 0 0 0 2h1a1 1 0 0 0 0-2zm14.66-5.07.71-.71a1 1 0 0 1 1.41 1.41l-.71.71a1 1 0 0 1-1.41-1.41zM5.63 17.66l-.71.71a1 1 0 0 1-1.41-1.41l.71-.71a1 1 0 0 1 1.41 1.41zm11.32 1.41-.71-.71a1 1 0 0 1 1.41-1.41l.71.71a1 1 0 0 1-1.41 1.41zM5.63 6.34 4.92 5.63a1 1 0 0 1 1.41-1.41l.71.71A1 1 0 0 1 5.63 6.34z";
 const SCROLLED_THRESHOLD = 12;
+
+/* ---------------------------------------------------------------------------
+ * Case study translations
+ *
+ * Only the body sections of a case study are translated. The hero, section
+ * labels, titles, stats, images and captions always stay English, so the
+ * toggle re-renders the detail sections and nothing else. English is default.
+ * ------------------------------------------------------------------------- */
+
+const PROJECT_TRANSLATIONS = {
+  "scf-vietnam": [
+    { code: "en", label: "EN", name: "English" },
+    { code: "vi", label: "VN", name: "Tiếng Việt", detailFile: "./projects/scf-vietnam.vi.js", detailId: "scf-vietnam-vi" },
+  ],
+};
+
+const loadedTranslationFiles = new Set();
+
+function loadTranslationFile(option) {
+  if (!option.detailFile || loadedTranslationFiles.has(option.detailFile)) {
+    return Promise.resolve();
+  }
+  return new Promise(function (resolve) {
+    const script = document.createElement("script");
+    script.src = option.detailFile;
+    script.async = false;
+    script.onload = function () {
+      loadedTranslationFiles.add(option.detailFile);
+      resolve();
+    };
+    script.onerror = function () {
+      console.warn("Translation file could not be loaded: " + option.detailFile);
+      resolve();
+    };
+    document.head.appendChild(script);
+  });
+}
+
+function createLanguageToggle(options, activeCode) {
+  const buttons = options
+    .map(function (option) {
+      const isActive = option.code === activeCode;
+      const state = isActive
+        ? "bg-white text-slate-950 shadow-sm dark:bg-slate-800 dark:text-white"
+        : "text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white";
+      return (
+        '<button type="button" role="tab" data-language-option="' + option.code + '"' +
+        ' aria-selected="' + (isActive ? "true" : "false") + '"' +
+        ' class="rounded-full px-6 py-2.5 text-base font-semibold transition ' + state + '">' +
+        '<span class="sr-only">' + option.name + ": </span>" + option.label +
+        "</button>"
+      );
+    })
+    .join("");
+
+  return (
+    '<section class="px-4 sm:px-6 lg:px-8">' +
+    '<div class="mx-auto flex w-full max-w-7xl flex-wrap items-center gap-3 border-t border-slate-200 pt-8 pb-10 dark:border-slate-800">' +
+    '<p class="text-[11px] font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">Read in</p>' +
+    '<div role="tablist" aria-label="Case study language" class="inline-flex rounded-full bg-slate-100 p-1 dark:bg-slate-900">' +
+    buttons +
+    "</div></div></section>"
+  );
+}
+
+function projectInLanguage(project, option) {
+  if (!option || option.code === "en") return project;
+  const translated = (window.portfolioProjectDetails || {})[option.detailId];
+  if (!translated || !Array.isArray(translated.popupSections)) return project;
+  return Object.assign({}, project, { popupSections: translated.popupSections });
+}
+
+function setupLanguageToggle(project) {
+  if (!languageToggleRoot) return;
+
+  const options = PROJECT_TRANSLATIONS[project.id];
+  if (!options || options.length < 2) {
+    languageToggleRoot.hidden = true;
+    languageToggleRoot.innerHTML = "";
+    return;
+  }
+
+  let activeCode = "en";
+  languageToggleRoot.hidden = false;
+  languageToggleRoot.innerHTML = createLanguageToggle(options, activeCode);
+
+  languageToggleRoot.addEventListener("click", function (event) {
+    const button = event.target.closest("[data-language-option]");
+    if (!button) return;
+
+    const nextCode = button.dataset.languageOption;
+    if (nextCode === activeCode) return;
+
+    const option = options.find(function (item) { return item.code === nextCode; });
+    if (!option) return;
+
+    button.disabled = true;
+    loadTranslationFile(option).then(function () {
+      button.disabled = false;
+      activeCode = nextCode;
+      languageToggleRoot.innerHTML = createLanguageToggle(options, activeCode);
+      renderDetailSections(projectInLanguage(project, option));
+    });
+  });
+}
 
 function applyTheme(theme) {
   document.documentElement.classList.toggle("dark", theme === "dark");
@@ -80,7 +186,9 @@ function lightboxData(title, desc) {
 }
 
 function renderInlineText(str) {
-  return escapeHtml(str).replace(/\*\*([^*]+)\*\*/gu, '<strong class="font-semibold text-slate-900 dark:text-white">$1</strong>');
+  return escapeHtml(str)
+    .replace(/\[([^\]]+)\]\((https?:\/\/[^)\s]+)\)/gu, '<a href="$2" target="_blank" rel="noopener noreferrer" class="font-medium text-brand-600 underline underline-offset-2 hover:text-brand-500 dark:text-brand-300">$1</a>')
+    .replace(/\*\*([^*]+)\*\*/gu, '<strong class="font-semibold text-slate-900 dark:text-white">$1</strong>');
 }
 
 function usesScopedProjectAsset(src = "") {
@@ -1256,6 +1364,25 @@ function renderNotFound() {
   if (notFoundRoot) notFoundRoot.hidden = false;
 }
 
+function renderDetailSections(project) {
+  const projectSections = getProjectSections(project);
+  if (detailSectionsRoot) {
+    detailSectionsRoot.innerHTML = project.detailLevel === "lite"
+      ? createLiteSections(project)
+      : projectSections.map(createRichSection).join("");
+    executeInlineScripts(detailSectionsRoot);
+  }
+  initCarousels();
+  initMermaid();
+  const navSections = (project.detailLevel === "lite"
+    ? [{ label: "Overview" }, { label: "Focus" }]
+    : projectSections
+  ).map(function (s, i) { return { label: s.label, id: getSectionId(s, i) }; })
+   .filter(function (s) { return s.label; });
+  initSectionNav(navSections);
+  initProjectImageLightbox();
+}
+
 function renderFound(project) {
   const metaCards = [
     { label: "Timeline", value: project.timeline },
@@ -1292,21 +1419,8 @@ function renderFound(project) {
   if (showcaseRoot) showcaseRoot.innerHTML = createProjectShowcase(project);
   if (navigationSectionRoot) navigationSectionRoot.innerHTML = createProjectNavigationSection(project);
 
-  const projectSections = getProjectSections(project);
-  if (detailSectionsRoot) {
-    detailSectionsRoot.innerHTML = project.detailLevel === "lite"
-      ? createLiteSections(project)
-      : projectSections.map(createRichSection).join("");
-    executeInlineScripts(detailSectionsRoot);
-  }
-  initCarousels();
-  initMermaid();
-  const navSections = (project.detailLevel === "lite"
-    ? [{ label: "Overview" }, { label: "Focus" }]
-    : projectSections
-  ).map(function (s, i) { return { label: s.label, id: getSectionId(s, i) }; })
-   .filter(function (s) { return s.label; });
-  initSectionNav(navSections);
+  renderDetailSections(project);
+  setupLanguageToggle(project);
   const shouldShowOutcomes = !project.hideOutcomesSummary && Array.isArray(project.outcomes) && project.outcomes.length > 0;
   if (outcomesSectionRoot) outcomesSectionRoot.hidden = !shouldShowOutcomes;
   if (shouldShowOutcomes) {

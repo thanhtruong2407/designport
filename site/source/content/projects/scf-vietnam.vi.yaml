@@ -1,0 +1,251 @@
+# Vietnamese overlay for scf-vietnam.
+#
+# This file ONLY holds prose. Structure, labels, titles, stats, image text,
+# carousel captions and table headers all stay English and come from
+# scf-vietnam.yaml. The build script merges this overlay onto that structure
+# and writes projects/scf-vietnam.vi.js.
+#
+# Sections are matched by `label`, not by order. If a label changes in the
+# English file, update it here too or the section falls back to English.
+#
+# `blocks` renders the same HTML as `customHtml` in the English file.
+#   - { lead: "...", text: "..." }  -> paragraph with a bold lead-in
+#   - { text: "..." }               -> plain paragraph
+#   - { bullets: [ "...", "..." ] } -> bullet list
+# Inline **bold**, *italic* and [text](url) are supported inside text/bullets.
+
+id: "scf-vietnam"
+lang: "vi"
+
+sections:
+  - label: "How I approached this"
+    body:
+      - "Tôi chạy theo Double Diamond: Discover, Define, Develop, Deliver. Hai lăng kính dẫn đường xuyên suốt."
+      - "Design Thinking lo nửa đầu. Nó buộc tôi bám vào vấn đề thật của dealer trước khi nghĩ tới giải pháp, và nó định hình Discover với Define. Hai bước sau của nó, prototype và test, kéo dài sang Develop và Deliver."
+      - "Systems Thinking lo phần xây. Khoản vay không khó. Khó là bắt hai hệ thống ngân hàng, hai bộ quy định và tám vai trò chạy như một sản phẩm. Đây là phần định hình Develop, với một nguyên tắc: không màn hình nào đứng một mình."
+      - "Trước khi vẽ bất cứ thứ gì, tôi ngồi với PM, BA và các domain expert phía client. Không phải để lấy requirement, mà để biết cái gì đã chốt và tôi được phép xoay trong khoảng nào."
+      - "Sang Define, tôi cùng BA và PM bóc từng vấn đề ra, luôn hỏi lại: mình đang chữa gốc hay chữa triệu chứng? Mọi bài toán tôi đều nhìn từ phía dealer, không nhìn từ phía ngân hàng."
+      - "Sang Develop, thiết kế chạy theo sprint song song với dev. Mỗi bài toán tôi đưa ra vài phương án kèm trade-off rõ ràng. Lý do đằng sau quyết định là một phần của bản giao, không phải thứ giải thích thêm cho có."
+
+  - label: "The opportunity"
+    body:
+      - "SCF là nền tảng supply chain finance B2B. Nó bắt đầu ở Ấn Độ, nối hơn 300.000 doanh nghiệp nhỏ với vốn lưu động thông qua chính các anchor mà họ đang buôn bán cùng. Năm 2022, SCF mở sang Việt Nam."
+      - "**Business goal:** đưa supply chain finance về mạng lưới nhà phân phối nhỏ ở Việt Nam. Dealer lấy vốn lưu động qua anchor sẵn có. Toàn bộ online, không phải ra chi nhánh."
+      - "Market research do phía client cung cấp. Tôi dùng nó để định hình bài toán sản phẩm phải giải. Số liệu cho thấy khoảng trống này có thật, không phải phỏng đoán."
+
+  - label: "The problem"
+    body:
+      - "Một tiệm nhỏ muốn lấy hàng từ nhà phân phối và trả tiền sau. Họ buôn bán đàng hoàng nhiều năm. Nhưng trong tay không có tiền mặt, cũng không có tài sản thế chấp. Không ngân hàng nào cho họ vay."
+      - "**Dealer là ai.** Một chủ tiệm nhỏ. Có cửa hàng thật, nhập hàng đều đặn từ một anchor. Lịch sử buôn bán sạch. Nhưng họ chưa từng vay chính thức, không có tài sản thế chấp, và không viết nổi một phương án kinh doanh. Phần lớn chưa đụng vào app tài chính bao giờ. Chúng tôi giả định họ sẵn sàng bỏ dở một yêu cầu khó hiểu hơn là nhấc máy gọi tổng đài. Mọi quyết định phía dưới đều là giả thuyết xây cho người này."
+      - "**Root cause:** ngân hàng chấm điểm bằng tài sản. Còn thứ thật sự chứng minh dealer đáng tin lại là lịch sử giao dịch của họ với nhà phân phối. Dữ liệu đó có sẵn, chỉ là chưa ai dùng."
+      - "Một mình bên nào cũng không giải nổi. Ngân hàng có vốn nhưng không chạm được vào dữ liệu buôn bán trong chuỗi cung ứng. SCF có quan hệ anchor và lịch sử hóa đơn, nhưng luật Việt Nam chỉ cho ngân hàng có giấy phép được cấp tín dụng. Bắt tay nhau thì mỗi bên bù đúng chỗ bên kia thiếu."
+      - "**Product goal:** mở tín dụng chính thức cho các nhà phân phối nhỏ. Không thế chấp, không hồ sơ giấy, không ra chi nhánh. Dealer nằm trong mạng lưới anchor phải tự nộp và tự được duyệt, và lúc nào cũng biết hồ sơ mình đang ở đâu mà không phải gọi cho ai."
+      - "Mô hình cho vay này đã chạy ở Ấn Độ rồi. Tôi không cần nghĩ lại từ đầu. Tôi cần làm nó chạy được ở Việt Nam. Cái khó không phải khoản vay, mà là ghép tám vai trò, hai hệ thống và quy định pháp lý Việt Nam khớp với nhau ở bên dưới."
+      - "**What I did:** đặt lại bài toán từ phía dealer, tách mục tiêu kinh doanh khỏi mục tiêu sản phẩm, và chốt những ràng buộc mà mọi quyết định sau này phải tôn trọng."
+
+  - label: "What made it hard"
+    columns:
+      - body: "Việt Nam có hai loại định danh: mã số thuế cho doanh nghiệp, CCCD cho hộ kinh doanh. KYC bên ngân hàng xử lý hai loại này theo hai đường khác nhau. Luật cho vay lại bắt buộc phải có phương án kinh doanh mới được vay tín chấp, mà chủ tiệm nhỏ thì không viết được. Sai một trong hai là launch dừng. Không phải dừng vì UX, mà dừng vì pháp lý."
+      - body: "Dealer nộp hồ sơ, yêu cầu chạy sang hệ thống internet banking của ngân hàng để duyệt và giải ngân, rồi quay về SCF. Hai sản phẩm. Hai team. Hai phong cách giao diện. Với dealer, tất cả phải là một luồng, không được để lộ ra là có hệ thống thứ hai."
+
+  - label: "How I broke the problems down"
+    body:
+      - "Hai bài toán này quá to để thiết kế thẳng. Bạn không đặt \"làm lại cho Việt Nam\" lên một màn hình được."
+      - "Nên việc chính của tôi là bóc nhỏ chúng. Đây mới là phần gánh cả dự án. Không phải mấy màn hình. Chuỗi từ vấn đề, sang thử thách, sang quyết định là chỗ design thinking thật sự nằm, và là chỗ tôi đóng góp nhiều nhất."
+      - "Phần còn lại của case study đi theo đúng chuỗi đó: một quyết định nền trước, rồi bốn quyết định gánh phần nặng. Tôi tách mỗi bài toán thành bốn thử thách cụ thể, rồi biến mỗi thử thách thành một quyết định thiết kế đủ nhỏ để xây được và bảo vệ được:"
+    bullets:
+      - "Hai loại định danh"
+      - "Phương án kinh doanh mà luật bắt buộc phải có"
+      - "Hai hệ thống ngân hàng phải cảm giác như một"
+      - "Một mô hình trạng thái dùng chung cho hai ngân hàng"
+
+  - label: "Foundation decision"
+    blocks:
+      - lead: "What it is."
+        text: "Một hồ sơ tín dụng đi qua tám vai trò trước khi tiền tới tay dealer:"
+      - bullets:
+          - "**Super Admin / Maker Admin / Checker Admin**: vận hành nền tảng"
+          - "**Master Anchor / Anchor**: phía nhà phân phối. Anchor upload hóa đơn; Master Anchor quản nhiều anchor brand"
+          - "**FI Maker / FI Checker**: nhân sự ngân hàng, người review và duyệt"
+          - "**Dealer**: người dùng cuối. Không bao giờ thấy bảy vai trò kia."
+      - lead: "The challenge."
+        text: "Mỗi lần bàn giao là một chỗ có thể vỡ. Đổi một chữ trên màn hình dealer, view của nhân sự ngân hàng có thể lệch theo. Sửa bảng hóa đơn cho anchor, màn duyệt của admin có thể xô lệch. Một thay đổi ở một chỗ có thể âm thầm làm hỏng hẳn view của vai trò khác."
+      - lead: "The decision."
+        text: "Coi như không màn hình nào đứng một mình. Trước khi chốt bất kỳ thay đổi nào, tôi map tác động của nó lên tất cả vai trò còn lại. Bản map đó là cửa ải sign-off suốt cả ba phase. Lý do: với tám vai trò trên bốn app, rủi ro không nằm ở một màn hình xấu. Rủi ro nằm ở mối nối khuất giữa các màn hình."
+      - lead: "Trade-off."
+        text: "Thay đổi nào cũng phải qua impact map trước, nên ship từng quyết định lâu hơn. Bù lại, không có cú bất ngờ nào lúc launch đến từ một vai trò chưa ai rà."
+      - lead: "What I did."
+        text: "Cấu trúc tám vai trò là của nền tảng. Thứ tôi thêm vào là kỷ luật: chưa map xong tác động lên mọi vai trò thì chưa ship. Tôi dựng và giữ cross-role impact map, và biến nó thành cửa ải sign-off cho cả ba phase."
+
+  - label: "Key decision 01 of 4"
+    blocks:
+      - lead: "What it is."
+        text: "Ngân hàng muốn chạy KYC thì hệ thống phải biết trước dealer thuộc loại hình kinh doanh nào."
+      - lead: "The challenge."
+        text: "Việt Nam không có một mã định danh doanh nghiệp duy nhất."
+      - bullets:
+          - "Doanh nghiệp dùng mã số thuế (MST)."
+          - "Hộ kinh doanh dùng CCCD."
+          - "Hai loại định danh này đẻ ra ba form: Business Dealer, SME, Personal Dealer."
+          - "Mỗi form kéo theo một quy trình KYC khác nhau bên ngân hàng."
+      - text: "Vậy là phải biết loại hình trước đã."
+      - text: "Nhưng xếp một dealer vào đúng nhóm là chuyện không dễ. Hồi soạn Luật Doanh nghiệp 2020, Quốc hội từng bàn có nên đưa hộ kinh doanh vào luật hay không, rồi quyết định để ra ngoài và giao cho một nghị định riêng. (Nguồn: [VietnamPlus, 2020](https://www.vietnamplus.vn/quoc-hoi-thao-luan-ve-dua-ho-kinh-doanh-vao-du-thao-luat-doanh-nghiep-post641403.vnp)) Ngay người làm luật còn chưa rạch ròi được ranh giới loại hình. Tính đến 2022, chỉ khoảng 25% trong 5 triệu hộ kinh doanh ở Việt Nam đăng ký chính thức. (Nguồn: [Hanoi Times, 2022](https://hanoitimes.vn/why-are-millions-of-home-based-businesses-in-vietnam-ignoring-registering-as-companies.659867.html))"
+      - text: "Vậy thì dealer nhiều khả năng cũng khai sai. Ở quy mô đó, sai là chuyện gần như chắc chắn. Mà cũng chẳng có registry nào sạch để tra ngược. Nên tôi đẩy phần khó về phía sản phẩm, không đẩy sang dealer."
+      - lead: "The decision."
+        text: "File của Anchor chọn form trước, dealer không phải chọn gì cả."
+      - bullets:
+          - "Anchor nộp file recommendation trước."
+          - "Hệ thống đọc file, xác định dealer thuộc program nào."
+          - "Hệ thống chọn một trong ba biến thể form tôi đã dựng: Business Dealer, SME, Personal Dealer."
+          - "Xong xuôi mới gửi link mời đi."
+          - "Dealer mở link, thấy ngay form đúng loại của mình, và chỉ việc xác nhận danh tính."
+      - text: "Cách này chạy được vì câu trả lời lấy từ file của Anchor chứ không lấy từ dealer. Và nếu định danh không khớp, lỗi chỉ về phía file chứ không chỉ vào mặt dealer."
+      - lead: "Trade-off."
+        text: "Toàn bộ phụ thuộc vào việc file của Anchor có đúng hay không. File sai thì dealer gặp lỗi mà tự họ không sửa được. Chúng tôi chấp nhận. Đó là vấn đề vận hành ở phía trên dealer, không phải vấn đề của sản phẩm."
+      - lead: "What I did."
+        text: "Hướng form-from-file là tôi làm cùng team. Còn ba biến thể form, các thông báo lỗi, và chỗ đặt consent trong ngữ cảnh là tôi thiết kế. Bản Ấn Độ chỉ có một loại định danh nên chưa từng gặp bài này. Chuyện hai loại định danh và cơ chế form-from-file là làm riêng cho Việt Nam."
+
+  - label: "Key decision 02 of 4"
+    blocks:
+      - lead: "What it is."
+        text: "Đây là distributor finance. Anchor bán hàng cho dealer và xuất hóa đơn. Hóa đơn đó chính là bằng chứng của một giao dịch thật. Sản phẩm lấy lịch sử buôn bán này thay cho phương án kinh doanh. (Mô hình lấy từ bản Ấn Độ.)"
+      - text: "Sau mỗi đơn, Anchor upload một hóa đơn gồm tên dealer, số tiền, ngày thanh toán. Mỗi lần upload là một dòng cộng vào hồ sơ. Lâu dần, hồ sơ đó thành thứ ngân hàng nhìn vào để chấm tín dụng. Việc của tôi là làm nó chạy trơn qua mọi vai trò có đụng vào."
+      - lead: "The challenge."
+        text: "Hóa đơn giờ là bằng chứng, nên một hóa đơn sai kéo theo một quyết định tín dụng sai. Ba vai trò cùng dựa vào một hồ sơ."
+      - bullets:
+          - "Anchor tạo hóa đơn."
+          - "Hạn mức của dealer phụ thuộc vào chúng."
+          - "Ngân hàng đọc chúng để duyệt."
+      - text: "Ai đó nhập sai thông tin hóa đơn là hồ sơ hỏng. Dealer khi ấy không dùng được hóa đơn đó để xin giải ngân. Lịch sử buôn bán chỉ có giá trị nếu sửa được một dòng mà không xóa nó đi."
+      - text: "Gian lận hóa đơn ở Việt Nam không phải rủi ro nhỏ. Năm 2023, một đường dây bán hơn 1 triệu hóa đơn khống cho hơn 88.000 tổ chức, giá trị gần 64.000 tỷ đồng. (Nguồn: [CAND, 2023](https://cand.com.vn/Ban-tin-113/xet-xu-100-bi-cao-trong-vu-mua-ban-trai-phep-hoa-don-gan-64-000-ty-dong-i717585/)) Vì vậy luật không cho phép xóa sai sót. Theo Nghị định 123/2020 và Công văn 1647/TCT-CS (5/2023), người bán không được xóa hóa đơn điện tử sai. Họ phải xuất hóa đơn điều chỉnh và giữ nguyên bản gốc trong hồ sơ. (Nguồn: [LuatVietnam](https://luatvietnam.vn/thue-phi-le-phi/nen-lap-hoa-don-dieu-chinh-hay-thay-the-565-94892-article.html)) Nghĩa là sản phẩm không được coi hóa đơn đã upload là bản chốt."
+      - lead: "The decision."
+        text: "Dựng phần hóa đơn thành một luồng có phân quyền, không phải một cú upload một chiều."
+      - bullets:
+          - "Anchor và Admin được tạo, disable và upload lại hóa đơn."
+          - "Dealer chỉ xem hóa đơn và chọn hóa đơn nào đem đi tài trợ, không bao giờ tạo."
+          - "Hóa đơn sai bị disable chứ không bị xóa, lịch sử vẫn audit được."
+          - "Dealer nhìn thấy hóa đơn nào đang inactive và vì sao, thay vì thấy hạn mức tự nhiên hụt đi mà không hiểu lý do."
+      - lead: "Trade-off."
+        text: "Cách này chỉ chạy với dealer nằm trong một mạng lưới anchor đang hoạt động. Người vay đứng một mình thì không có hóa đơn nào để dựng hồ sơ. Chúng tôi chấp nhận. Đó đúng là tệp sản phẩm nhắm tới."
+      - lead: "What I did."
+        text: "Tôi map xem một hóa đơn sai đập vào từng vai trò ra sao, rồi thiết kế các chức năng hóa đơn theo từng vai trò. Cơ chế inactive-invoice là của tôi. Bản Ấn Độ chưa bao giờ cần đến nó."
+
+  - label: "Key decision 03 of 4"
+    blocks:
+      - lead: "What it is."
+        text: "Muốn nộp xong hồ sơ, dealer phải làm một bước chạy trong hệ thống của ngân hàng, không phải của SCF."
+      - lead: "The challenge."
+        text: "Có hai ràng buộc không đụng vào được."
+      - bullets:
+          - "Dealer bắt buộc đăng nhập trực tiếp với ngân hàng. Đó là bên cho vay có giấy phép, và chính sách trình duyệt, bảo mật lẫn luật ngân hàng đều đòi như vậy."
+          - "Giao diện ngân hàng giữ nguyên phong cách của họ, SCF không restyle được."
+      - text: "Câu hỏi còn lại là bước đó nên đặt ở đâu. Đáp án mặc định là redirect: đẩy dealer sang app ngân hàng, làm xong rồi đẩy về. Tôi thử liệt kê xem phương án đó bắt dealer phải gánh những gì:"
+      - bullets:
+          - "Họ không biết là hồ sơ này còn cần tới một app thứ hai."
+          - "Họ có thể không mở app ngân hàng, thế là hồ sơ dừng luôn ở đó."
+          - "Họ mở app ngân hàng nhưng không tìm ra chỗ để làm tiếp."
+          - "Họ phải gõ lại những thông tin đã khai cho SCF."
+          - "Họ không biết nên vào app nào để xem trạng thái."
+          - "Họ ít khi nộp hồ sơ, nên tới lần sau đã quên mất quy trình chạy qua hai app."
+      - text: "Trong Workgeist Report của Qatalog, 6 trên 10 người nói khó theo dõi thông tin nằm rải giữa nhiều app, và mất 9,5 phút mới tập trung lại được sau mỗi lần chuyển app. (Nguồn: [Qatalog Workgeist Report, qua Conclude](https://conclude.io/blog/context-switching-is-killing-your-productivity/))"
+      - text: "Mỗi gạch đầu dòng ở trên là một chỗ rơi rụng, và chúng cộng dồn lên nhau. Với người lần đầu dùng app tài chính, cộng lại là gần hết funnel."
+      - lead: "Industry direction."
+        text: "Năm 2021, World Retail Banking Report của Capgemini đã nói ngân hàng nên đi theo Banking-as-a-Service, nhúng dịch vụ tài chính vào đời sống hằng ngày, thay vì bắt khách hàng tìm đến mình. (Nguồn: [Capgemini, 2021](https://www.capgemini.com/news/press-releases/world-retail-banking-report-2021-to-create-new-value-banks-can-adopt-banking-as-a-service-to-embed-finance-in-consumer-lifestyles/))"
+      - text: "Nhúng không chỉ dễ thở hơn cho dealer của chúng tôi. Nó còn là hướng ngành đang đi sẵn."
+      - lead: "The decision."
+        text: "Nhúng màn hình ngân hàng vào trong SCF. Chấp nhận hai ràng buộc kia, còn lại nắm hết."
+      - bullets:
+          - "Đặt màn hình ngân hàng nằm giữa header và bottom navigation của SCF, để dealer thấy rõ mình chưa rời khỏi SCF."
+          - "Prefill form của ngân hàng bằng dữ liệu SCF, dealer không phải gõ lại gì ngoài phần đăng nhập bắt buộc."
+          - "Dealer từ ngân hàng quay về thì thả họ đúng chỗ đang dở, không thả về đầu."
+          - "Dựng một progress tracker do SCF nắm, gói quy trình nội bộ của ngân hàng lại thành vài giai đoạn đọc được."
+      - text: "Hai hệ thống vẫn nằm đó. Chỉ là dealer không lạc giữa chúng nữa."
+      - lead: "Trade-off."
+        text: "Màn hình hiện hai phong cách cùng lúc. Màu, font, component của SCF ở ngoài, của ngân hàng ở trong. Nhìn không ra một sản phẩm liền mạch."
+      - lead: "What I did."
+        text: "Tôi xác định việc nhúng phải phủ tới đâu, và nhận phần làm cho nó cảm giác như một sản phẩm. Tôi gói quy trình ngân hàng lại thành một stage duy nhất trong SCF và đặt điểm vào cho stage đó. Tôi thiết kế chỗ hiển thị thông báo của ngân hàng ngay trong SCF, để dealer đọc tại chỗ thay vì phải đăng nhập vào ngân hàng chỉ để xem tin."
+
+  - label: "Key decision 04 of 4"
+    blocks:
+      - lead: "What it is."
+        text: "Dealer gửi yêu cầu rút tiền rồi ngồi chờ. Yêu cầu chạy qua ngân hàng, mỗi bước lại đổi trạng thái một lần. Dealer chỉ có đúng một câu hỏi: *giờ tôi có phải làm gì không?*"
+      - lead: "The challenge."
+        text: "Riêng đối tác hiện tại đã có mười một trạng thái. Chúng sinh ra cho vận hành ngân hàng, không phải cho dealer. Nhìn vào màn hình, dealer không đoán được:"
+      - bullets:
+          - "Yêu cầu của mình đang xảy ra chuyện gì."
+          - "Mình có phải làm gì không."
+      - text: "Rủi ro lớn hơn nằm ở tương lai. Mỗi ngân hàng một bộ trạng thái riêng. Cứ bê nguyên ra thì thêm một ngân hàng là thêm một đống. Trải nghiệm SCF sẽ vỡ vụn, ngân hàng này một kiểu, ngân hàng kia một kiểu."
+      - lead: "The decision."
+        text: "SCF nắm luôn toàn bộ trạng thái mà dealer nhìn thấy. Trạng thái từ ngân hàng nào cũng phải dịch thành một trong năm badge tiếng Việt dễ hiểu trước khi lên màn hình."
+      - text: "Trang chi tiết yêu cầu chia làm ba lớp, lớp sau cụ thể hơn lớp trước."
+      - bullets:
+          - "Badge của SCF nói kết quả bằng một chữ."
+          - "Thông báo của ngân hàng nói vì sao."
+          - "Bảng hóa đơn chỉ đúng hóa đơn cần sửa."
+      - text: "Không lớp nào lặp lại lớp trên nó."
+      - lead: "Trade-off."
+        text: "Nhiều trạng thái của ngân hàng gộp lại thành một trạng thái SCF, nên dealer không biết chính xác yêu cầu đang nằm ở bước nội bộ nào. Chúng tôi chấp nhận. Đó là việc bên trong của ngân hàng, dealer có thấy cũng không làm gì được, hiện ra chỉ tổ khiến họ lo."
+      - lead: "Payoff."
+        text: "Đến khi ngân hàng thứ hai vào với một bộ trạng thái hoàn toàn khác, việc phải làm chỉ là map bộ đó về đúng năm badge cũ. Một task setup vài ngày, không phải một cuộc redesign vài tháng."
+      - lead: "What I did."
+        text: "Phần này tôi nắm từ đầu tới cuối. Tôi phát hiện ra chỗ lệch và đặt lại vấn đề: dịch trạng thái là việc của SCF, không phải của ngân hàng. Rồi tôi xây nó."
+      - bullets:
+          - "Tôi map mười một trạng thái của ngân hàng về năm badge, và tự viết label từng badge bằng tiếng Việt dễ hiểu. Tôi chốt nguyên tắc gom nhóm: gom theo việc dealer cần làm tiếp, không gom theo việc ngân hàng đang làm bên trong."
+          - "Tôi thiết kế trang chi tiết yêu cầu ba lớp."
+          - "Tôi nhận luôn phần edge case. Tôi lấy trạng thái ngân hàng làm gốc, vẽ happy path trước, rồi map hết các nhánh có thể vỡ. Ra mười hai case, tất cả suy ra từ state machine của disbursement trước khi vẽ màn hình nào. Tôi thiết kế màn cho từng case, để dealer rơi vào tình huống lạ vẫn biết phải sửa gì."
+
+  - label: "What shipped"
+    tableIntro: "Bốn quyết định này đứng vững trên những chiều quan trọng với một sản phẩm nhiều bên và chịu quản lý:"
+    columns:
+      - subsections:
+          - "Không có chữ nào lệch lọt tới dealer"
+          - "Đổi trạng thái lan đều qua mọi portal"
+          - "—"
+          - "Pattern dùng lại được cho ngân hàng mới"
+      - subsections:
+          - "Lỗi chỉ về file, không chỉ vào dealer"
+          - "Consent đặt đúng ngữ cảnh (Nghị định 13/2023)"
+          - "Dealer xác nhận, không phải phân loại"
+          - "—"
+      - subsections:
+          - "Ngân hàng chấm bằng lịch sử buôn bán thật"
+          - "—"
+          - "Dealer không phải viết tài liệu nào"
+          - "Chạy với mọi quan hệ anchor–dealer"
+      - subsections:
+          - "Đăng nhập riêng giúp cô lập rủi ro"
+          - "Ngân hàng xác thực từng giao dịch (luật ngân hàng)"
+          - "Dealer không rời khỏi SCF"
+          - "Template cho mọi ngân hàng sau này"
+      - subsections:
+          - "Dealer nhận câu trả lời rõ, không thấy mã thô"
+          - "—"
+          - "Tiếng Việt dễ hiểu, không cần biết ngân hàng"
+          - "Thêm ngân hàng bằng map mã, không phải redesign"
+    summary: "Lý do pattern này trụ được: việc gộp mười một xuống năm xảy ra ở tầng hiển thị, không phải tầng dữ liệu. Mỗi badge vẫn truy ngược về đúng một mã. Không mất gì cả, chỉ là dịch lại. Nhờ vậy pattern hấp thụ được ngân hàng mới thay vì gãy dưới sức nặng của nó."
+    closingNote: "**Dealer đi trọn hành trình.** Đặt bốn quyết định nối nhau, chúng vẽ ra đúng con đường dealer đi: được mời và onboard, đi qua ngân hàng mà không rời SCF, chọn đúng hóa đơn, lúc nào cũng biết mình đang ở đâu. Đây chính là mục tiêu sản phẩm đặt ra từ đầu: người chủ tiệm ở đầu bài tự mình lấy được vốn lưu động. Không chi nhánh, không hồ sơ giấy, không thế chấp."
+
+  - label: "How we'd measure success"
+    body:
+      - "Ngoài phần đã ship, chúng tôi có dựng một bộ chỉ số để đo sâu hơn. Hợp đồng kết thúc trước launch nên tôi không có số liệu thật để đối chiếu. Đây là framework hướng tới, không phải kết quả đã chứng minh. Nói thẳng chuyện đó cũng là một phần của việc ghi nhận trung thực."
+      - "**Baseline để so:** một khoản vay ngân hàng truyền thống ở Việt Nam mất 1–3 tuần. Người vay đi gom giấy tờ, ra chi nhánh, nộp phương án kinh doanh. Mục tiêu của chúng tôi là xong trong ngày, với các yêu cầu nộp trong khung cut-off của ngân hàng (6:00–16:00, Thứ Hai–Thứ Sáu)."
+      - "Ba chỉ số dưới đây là những thứ sản phẩm được xây để tác động. Mỗi chỉ số truy ngược về một quyết định ở trên:"
+    columns:
+      - subsections:
+          - "Bao nhiêu dealer bắt đầu rồi đi tới cuối, không bỏ dở, không phải gọi support."
+          - "Quyết định 1: form định hình sẵn từ file anchor, dealer không phải tự khai loại."
+          - "Càng cao càng tốt. Theo cohort, đo hằng tuần qua từng đợt rollout anchor."
+      - subsections:
+          - "Dealer chờ bao lâu từ lúc gửi yêu cầu tới lúc nhận tiền, tính trên các yêu cầu trong khung cut-off."
+          - "Quyết định 3: màn ngân hàng chạy trong SCF nên dealer không kẹt ở điểm bàn giao. Từ vài tuần rút còn vài giờ."
+          - "Càng thấp càng tốt. Median theo tuần, chỉ tính yêu cầu trong cut-off."
+      - subsections:
+          - "Dealer phải gọi support bao nhiêu lần thay vì tự sửa được."
+          - "Quyết định 4: năm badge cộng trang chi tiết ba lớp cho phép dealer tự gỡ."
+          - "Càng thấp càng tốt. Tính trên mỗi dealer hoạt động mỗi tháng, theo dõi sau mỗi release hoặc mỗi ngân hàng mới."
+    summary: "**What I did:** tôi làm cùng team để chốt baseline và ba chỉ số này, để team sau có tiêu chí rõ ràng mà đo."
+
+  - label: "What I'd do differently"
+    body:
+      - "**Đến gần người dùng cuối hơn, và có số liệu thật.** Team triển khai chưa từng làm việc trực tiếp với người dùng. Đó là mô hình hợp tác, không phải lựa chọn của tôi. Tôi làm việc với các chuyên gia phía client, những người hiểu rõ khách hàng và sản phẩm, và input của họ định hình mọi quyết định. Nhưng tôi không kiểm chứng được dealer thật sự hành xử ra sao, và cũng không có tracking để soi lại sau launch. Lần sau tôi sẽ đẩy cả hai thứ: được tiếp xúc người dùng, dù chỉ thỉnh thoảng, và có tracking trên những quyết định quan trọng nhất."
+      - "**Ghi chú:** tên sản phẩm và tên ngân hàng đối tác đã được ẩn danh để tôn trọng bảo mật. Toàn bộ luồng, quyết định và kết quả đều là thật."

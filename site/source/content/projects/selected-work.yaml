@@ -15,7 +15,7 @@ featuredProjects:
     hideDetailRole: true
     roleDetail: "Product Designer · Multi-party System · Fintech"
     roleContribution: "Outsourcing — delivery team had no direct user access and no post-launch data."
-    description: "A B2B supply chain finance product that gave 300+ Vietnamese dealers unsecured credit, using invoice history instead of collateral. The hard part wasn't the loan; it was turning two banking systems, two sets of laws, and eight roles into one flow the dealer could trust."
+    description: "A shop owner with a good trading record but no collateral can't get a bank loan in Vietnam. I designed the product that used their invoice history as proof instead. 300+ dealers approved, no branch visit, no paperwork. Behind that one screen: eight roles, two systems, and a regulator that doesn't let you delete a mistake."
     company: "FPT Software (SCF Vietnam)"
     timeline: "2023"
     duration: "10 months"

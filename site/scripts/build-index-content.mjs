@@ -15,6 +15,7 @@ const textshadowAiBehaviorSystemPath = path.join(siteRoot, "source/content/proje
 const textshadowPresetRuleSystemPath = path.join(siteRoot, "source/content/projects/textshadow-03-preset-rule.yaml");
 const cihmsProjectPath = path.join(siteRoot, "source/content/projects/cihms.yaml");
 const scfVietnamProjectPath = path.join(siteRoot, "source/content/projects/scf-vietnam.yaml");
+const scfVietnamViOverlayPath = path.join(siteRoot, "source/content/projects/scf-vietnam.vi.yaml");
 const textshadowProblemPath = path.join(siteRoot, "source/content/subpages/textshadow-problem.yaml");
 const textshadowHumanPath = path.join(siteRoot, "source/content/subpages/textshadow-human-branch.yaml");
 const textshadowAiPath = path.join(siteRoot, "source/content/subpages/textshadow-ai-branch.yaml");
@@ -27,6 +28,7 @@ const textshadowAiBehaviorSystemDetailPath = path.join(repoRoot, "projects/texts
 const textshadowPresetRuleSystemDetailPath = path.join(repoRoot, "projects/textshadow-03-preset-rule.js");
 const cihmsDetailPath = path.join(repoRoot, "projects/cihms.js");
 const scfVietnamDetailPath = path.join(repoRoot, "projects/scf-vietnam.js");
+const scfVietnamViDetailPath = path.join(repoRoot, "projects/scf-vietnam.vi.js");
 const textshadowProblemOutputPath = path.join(repoRoot, "projects/textshadow/problem.html");
 const textshadowHumanOutputPath = path.join(repoRoot, "projects/textshadow/human-branch.html");
 const textshadowAiOutputPath = path.join(repoRoot, "projects/textshadow/ai-branch.html");
@@ -568,6 +570,128 @@ function projectDetailJs(project) {
   return `window.portfolioProjectDetails = window.portfolioProjectDetails || {};\n\nwindow.portfolioProjectDetails[${JSON.stringify(id)}] = ${JSON.stringify(detail, null, 2)};\n`;
 }
 
+/* ---------------------------------------------------------------------------
+ * Language overlays
+ *
+ * A translation overlay carries prose only. It is merged onto the English
+ * project structure, so labels, titles, stats, image paths, alt text and
+ * carousel captions always come from the English source and can never drift.
+ * Sections are matched by `label`; an unmatched label is a build error.
+ * ------------------------------------------------------------------------- */
+
+const OVERLAY_PARAGRAPH_CLASS = "mb-5 max-w-4xl text-base leading-8 text-slate-600 dark:text-slate-300";
+const OVERLAY_LEAD_CLASS = "font-semibold text-slate-900 dark:text-white";
+const OVERLAY_LIST_CLASS = "mb-5 grid gap-2";
+const OVERLAY_ITEM_CLASS = "relative pl-5 text-base leading-8 text-slate-600 before:absolute before:left-0 before:top-3.5 before:h-1.5 before:w-1.5 before:rounded-full before:bg-brand-500 dark:text-slate-300";
+const OVERLAY_ITEM_STRONG_CLASS = "font-semibold text-slate-950 dark:text-white";
+const OVERLAY_ITEM_MUTED_CLASS = "text-slate-500 dark:text-slate-400";
+const OVERLAY_LINK_CLASS = "font-medium text-brand-600 underline underline-offset-2 hover:text-brand-500 dark:text-brand-300";
+
+// Escapes HTML, then renders inline **bold**, *italic* and [text](url).
+function overlayInline(value) {
+  return htmlText(value)
+    .replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/gu, (match, label, href) =>
+      `<a href="${href}" target="_blank" rel="noopener noreferrer" class="${OVERLAY_LINK_CLASS}">${label}</a>`)
+    .replace(/\*\*([^*]+)\*\*/gu, `<strong class="${OVERLAY_LEAD_CLASS}">$1</strong>`)
+    .replace(/(^|[^*])\*([^*]+)\*/gu, "$1<em>$2</em>")
+    .replace(/'/gu, "&#39;");
+}
+
+function overlayListItemHtml(item) {
+  // "**Label**: rest" keeps the label bold and mutes the description, matching
+  // the role list in the English foundation section.
+  const labelled = /^\*\*([^*]+)\*\*(:\s.*)$/su.exec(item);
+  if (labelled) {
+    return `<li class="${OVERLAY_ITEM_CLASS}"><strong class="${OVERLAY_ITEM_STRONG_CLASS}">${htmlText(labelled[1])}</strong><span class="${OVERLAY_ITEM_MUTED_CLASS}">${overlayInline(labelled[2])}</span></li>`;
+  }
+  return `<li class="${OVERLAY_ITEM_CLASS}">${overlayInline(item)}</li>`;
+}
+
+function overlayBlocksHtml(blocks) {
+  return blocks
+    .map((block) => {
+      if (Array.isArray(block.bullets)) {
+        return `<ul class="${OVERLAY_LIST_CLASS}">${block.bullets.map(overlayListItemHtml).join("")}</ul>`;
+      }
+      const lead = block.lead
+        ? `<strong class="${OVERLAY_LEAD_CLASS}">${htmlText(block.lead)}</strong> `
+        : "";
+      return `<p class="${OVERLAY_PARAGRAPH_CLASS}">${lead}${overlayInline(block.text || "")}</p>`;
+    })
+    .join("");
+}
+
+function applySectionOverlay(section, overlay, context) {
+  const next = { ...section };
+
+  if (Array.isArray(overlay.body)) next.body = overlay.body.slice();
+  if (Array.isArray(overlay.bullets)) next.bullets = overlay.bullets.slice();
+  if (typeof overlay.tableIntro === "string") next.tableIntro = overlay.tableIntro;
+  if (typeof overlay.summary === "string") next.summary = overlay.summary;
+  if (typeof overlay.closingNote === "string") next.closingNote = overlay.closingNote;
+
+  if (Array.isArray(overlay.blocks)) {
+    if (!section.customHtml) {
+      throw new Error(`${context}: overlay supplies "blocks" but the English section has no customHtml`);
+    }
+    next.customHtml = overlayBlocksHtml(overlay.blocks);
+  }
+
+  if (Array.isArray(overlay.columns)) {
+    const baseColumns = section.columns || [];
+    if (overlay.columns.length !== baseColumns.length) {
+      throw new Error(`${context}: overlay has ${overlay.columns.length} columns, English has ${baseColumns.length}`);
+    }
+    next.columns = baseColumns.map((column, columnIndex) => {
+      const columnOverlay = overlay.columns[columnIndex] || {};
+      const nextColumn = { ...column };
+      if (typeof columnOverlay.body === "string") nextColumn.body = columnOverlay.body;
+      if (Array.isArray(columnOverlay.subsections)) {
+        const baseSubsections = column.subsections || [];
+        if (columnOverlay.subsections.length !== baseSubsections.length) {
+          throw new Error(`${context}, column ${columnIndex + 1}: overlay has ${columnOverlay.subsections.length} subsections, English has ${baseSubsections.length}`);
+        }
+        // Subsection labels (Trust, Compliance, ...) stay English; only the body is translated.
+        nextColumn.subsections = baseSubsections.map((subsection, subsectionIndex) => ({
+          ...subsection,
+          body: columnOverlay.subsections[subsectionIndex],
+        }));
+      }
+      return nextColumn;
+    });
+  }
+
+  return next;
+}
+
+function applyLanguageOverlay(baseProject, overlay) {
+  const lang = requirePath(overlay, "lang");
+  const baseDetail = requirePath(baseProject, "detail");
+  const baseSections = baseDetail.popupSections || [];
+  const overlaySections = overlay.sections || [];
+
+  const byLabel = new Map(baseSections.map((section, index) => [section.label, index]));
+  const popupSections = baseSections.map((section) => ({ ...section }));
+
+  overlaySections.forEach((sectionOverlay) => {
+    const label = sectionOverlay.label;
+    const index = byLabel.get(label);
+    if (index === undefined) {
+      throw new Error(`Overlay [${lang}] references section "${label}", which does not exist in ${baseProject.id}.yaml`);
+    }
+    popupSections[index] = applySectionOverlay(
+      popupSections[index],
+      sectionOverlay,
+      `Overlay [${lang}] section "${label}"`,
+    );
+  });
+
+  return {
+    id: `${requirePath(baseProject, "id")}-${lang}`,
+    detail: { ...baseDetail, popupSections },
+  };
+}
+
 function paragraphHtml(paragraph, className = "mb-5 max-w-4xl text-base leading-8 text-slate-600 dark:text-slate-300") {
   if (typeof paragraph === "string") {
     return `<p class="${className}">${htmlText(paragraph)}</p>`;
@@ -1018,6 +1142,10 @@ function main() {
   const textshadowPresetRuleSystemProject = readYamlFile(textshadowPresetRuleSystemPath);
   const cihmsProject = readYamlFile(cihmsProjectPath);
   const scfVietnamProject = readYamlFile(scfVietnamProjectPath);
+  const scfVietnamViProject = applyLanguageOverlay(
+    scfVietnamProject,
+    readYamlFile(scfVietnamViOverlayPath),
+  );
   const textshadowProblem = readYamlFile(textshadowProblemPath);
   const textshadowHuman = readYamlFile(textshadowHumanPath);
   const textshadowAi = readYamlFile(textshadowAiPath);
@@ -1037,6 +1165,7 @@ function main() {
   fs.writeFileSync(textshadowPresetRuleSystemDetailPath, projectDetailJs(textshadowPresetRuleSystemProject));
   fs.writeFileSync(cihmsDetailPath, projectDetailJs(cihmsProject));
   fs.writeFileSync(scfVietnamDetailPath, projectDetailJs(scfVietnamProject));
+  fs.writeFileSync(scfVietnamViDetailPath, projectDetailJs(scfVietnamViProject));
   fs.writeFileSync(textshadowProblemOutputPath, renderProblemSubpage(textshadowProblem));
   fs.writeFileSync(textshadowHumanOutputPath, renderHumanBranchSubpage(textshadowHuman));
   fs.writeFileSync(textshadowAiOutputPath, renderAiBranchSubpage(textshadowAi));
