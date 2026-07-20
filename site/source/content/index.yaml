@@ -19,8 +19,8 @@ hero:
     linkedLine: "Viet Thanh"
   role:
     from: null
-    to: "Product Designer"
-  summary: "Product Designer with 6 years of experience across AI-powered SaaS, B2B, and multi-product systems. I work from user problems to proposed solutions, then drive features through research, design, and delivery, validating outputs and owning end-to-end execution. Experienced in feature ownership, stakeholder communication, and Agile delivery alongside core UX/UI work."
+    to: "Product Designer who owns features end-to-end"
+  summary: "6 years across AI-powered SaaS, B2B, and fintech. I take a feature from the user problem to a validated release: research, design, acceptance criteria, delivery. I work best on complex products, where there are many roles, real business logic, and compliance rules."
   primaryCta:
     label: "View Works"
     href: "#work"
@@ -41,7 +41,7 @@ hero:
 sections:
   work:
     index: "01 / Works"
-    title: "Works with Product Impact"
+    title: "Selected work: decisions, trade-offs, outcomes"
     supportingLabel: "Supporting Works"
   about:
     index: "About"
@@ -56,14 +56,14 @@ sections:
     educationLabel: "Education"
   contact:
     index: "04 / Contact"
-    title: "Open to Product Designer Roles"
+    title: "Open to Product Designer & Product Owner Roles"
 
 timeline:
   -
     company: "Visily.AI"
     logoText: "VA"
     logoSrc: "./assets/logo-VA.png"
-    period: "2022 - 2026"
+    period: "2022 - Present"
     summary: ""
     roles:
       -
@@ -83,7 +83,7 @@ timeline:
       -
         period: "2022 - Oct 2025"
         role: "Product Designer"
-        type: "Freelance"
+        type: "Freelance (part-time)"
         keywords:
           - "AI training data"
           - "Template design"
@@ -270,7 +270,7 @@ about:
 
 contact:
   title: "Contact options"
-  text: "Product Designer specializing in AI-powered products and UX systems."
+  text: "Product Designer specializing in AI-powered products and complex B2B systems. Open to hybrid design/product roles."
   items:
     - label: "Email"
       value: "thanhtruong2407@gmail.com"

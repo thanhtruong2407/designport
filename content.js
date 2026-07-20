@@ -238,7 +238,7 @@ window.portfolioContent = {
       "company": "Visily.AI",
       "logoText": "VA",
       "logoSrc": "./assets/logo-VA.png",
-      "period": "2022 - 2026",
+      "period": "2022 - Present",
       "summary": "",
       "roles": [
         {
@@ -261,7 +261,7 @@ window.portfolioContent = {
         {
           "period": "2022 - Oct 2025",
           "role": "Product Designer",
-          "type": "Freelance",
+          "type": "Freelance (part-time)",
           "keywords": [
             "AI training data",
             "Template design"
