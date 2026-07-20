@@ -56,7 +56,9 @@ window.portfolioProjectDetails["scf-vietnam"] = {
         "**What I did:** I framed the problem from the dealer's side, separated the business goal from the product goal, and set the constraints every later decision had to respect."
       ],
       "asideImageSrc": "./assets/scf-img-product-goal-self-serve-credit.png",
-      "asideImageAlt": "Product goal - self-serve credit with no collateral, no paperwork, no branch visit"
+      "asideImageAlt": "Product goal - self-serve credit with no collateral, no paperwork, no branch visit",
+      "diagramImageSrc": "./assets/scf-img-dealer-journey-swimlane.png",
+      "diagramImageAlt": "Dealer journey swimlane across dealer, anchor, SCF and bank"
     },
     {
       "label": "What made it hard",

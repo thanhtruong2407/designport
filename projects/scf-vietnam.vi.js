@@ -57,7 +57,9 @@ window.portfolioProjectDetails["scf-vietnam-vi"] = {
         "**What I did:** đặt lại bài toán từ phía dealer, tách mục tiêu kinh doanh khỏi mục tiêu sản phẩm, và chốt những ràng buộc mà mọi quyết định sau này phải tôn trọng."
       ],
       "asideImageSrc": "./assets/scf-img-product-goal-self-serve-credit.png",
-      "asideImageAlt": "Product goal - self-serve credit with no collateral, no paperwork, no branch visit"
+      "asideImageAlt": "Product goal - self-serve credit with no collateral, no paperwork, no branch visit",
+      "diagramImageSrc": "./assets/scf-img-dealer-journey-swimlane.png",
+      "diagramImageAlt": "Dealer journey swimlane across dealer, anchor, SCF and bank"
     },
     {
       "label": "What made it hard",
